@@ -20,7 +20,20 @@ let instructions = {
  };
 
 
+ /*
+  Practice block
+  Show an exclamation mark either on the left or on the right side of the
+  screen.
+  Number of trials: 20
+*/
+
+// practice block
+let practiceBlock = {
+    timeline: [],
+  };
+
+
 // Main
 jsPsych.init({
-      timeline: [instructions],
+      timeline: [instructions, practiceBlock],
     });
