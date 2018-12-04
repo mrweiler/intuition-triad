@@ -37,9 +37,16 @@ let practiceBlockInstructions = {
     show_clickable_nav: true,
  };
 
+ // Practice trials
+let practiceTrials = {
+    timeline: [],
+    repetitions: 10,
+    randomize_order: true,
+  };
+
 // practice block
 let practiceBlock = {
-    timeline: [practiceBlockInstructions],
+    timeline: [practiceBlockInstructions, practiceTrials],
   };
 
 
