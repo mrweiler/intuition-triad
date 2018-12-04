@@ -1,0 +1,3 @@
+jsPsych.init({
+      timeline: [],
+    });
