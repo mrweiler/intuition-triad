@@ -27,9 +27,19 @@ let instructions = {
   Number of trials: 20
 */
 
+// Practice block instructions
+let practiceBlockInstructions = {
+    type: 'instructions',
+    pages: [
+        'First page with instructions',
+        'Second page with instructions',
+        ],
+    show_clickable_nav: true,
+ };
+
 // practice block
 let practiceBlock = {
-    timeline: [],
+    timeline: [practiceBlockInstructions],
   };
 
 
