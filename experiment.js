@@ -13,8 +13,8 @@
 let instructions = {
     type: 'instructions',
     pages: [
-        'First page with instructions',
-        'Second page with instructions',
+        'First page with general instructions',
+        'Second page with general instructions',
         ],
     show_clickable_nav: true,
  };
@@ -31,8 +31,8 @@ let instructions = {
 let practiceBlockInstructions = {
     type: 'instructions',
     pages: [
-        'First page with instructions',
-        'Second page with instructions',
+        'First page with practice block instructions',
+        'Second page with practice block instructions',
         ],
     show_clickable_nav: true,
  };
