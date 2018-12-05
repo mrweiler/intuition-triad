@@ -52,6 +52,14 @@ let practiceStimuli = [
     {stimulus: '<div class="right">!</div>'},
 ];
 
+// Practice trial
+let practiceTrial = {
+    type: 'html-keyboard-response',
+    stimulus: jsPsych.timelineVariable('stimulus'),
+    choices: ['s', 'l'],
+    trial_duration: 2000,
+};
+
 // Warning that reaction is too slow
 let practiceTooSlow = {
     type: 'html-keyboard-response',
@@ -71,14 +79,6 @@ let practiceTooSlowNode = {
             return false;
         }
     },
-};
-
-// Practice trial
-let practiceTrial = {
-    type: 'html-keyboard-response',
-    stimulus: jsPsych.timelineVariable('stimulus'),
-    choices: ['s', 'l'],
-    trial_duration: 2000,
 };
 
 // Practice procedure
