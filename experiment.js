@@ -38,7 +38,7 @@ let practiceBlockInstructions = {
     show_clickable_nav: true,
 };
 
-// Fixation cross
+// Practice fixation cross
 let practiceFixationCross = {
     type: 'html-keyboard-response',
     stimulus: '<div class="fixation">+</div>',
@@ -119,9 +119,17 @@ let intuitionBlockInstructions = {
     show_clickable_nav: true,
 };
 
+// Intuition fixation cross
+let intuitionFixationCross = {
+    type: 'html-keyboard-response',
+    stimulus: '<div class="fixation">+</div>',
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 500,
+};
+
 // Intuition procedure
 let intuitionProcedure = {
-    timeline: [],
+    timeline: [intuitionFixationCross],
     timeline_variables: null,
     randomize_order: true,
     repetitions: 10,
