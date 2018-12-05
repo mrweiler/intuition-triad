@@ -4,6 +4,7 @@
     date: 2018-11-30
 */
 
+
 /*
     Instruction block
     Show instructions on several pages.
@@ -20,7 +21,7 @@ let instructions = {
 };
 
 
- /*
+/*
     Practice block
     Show an exclamation mark either on the left or on the right side of the
     screen.
@@ -35,6 +36,14 @@ let practiceBlockInstructions = {
         'Second page with practice block instructions',
     ],
     show_clickable_nav: true,
+};
+
+// Fixation cross
+let fixationCross = {
+    type: 'html-keyboard-response',
+    stimulus: '<div class="fixation">+</div>',
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 500,
 };
 
 // Practice stimuli
@@ -53,7 +62,7 @@ let practiceTrial = {
 
 // Practice procedure
 let practiceProcedure = {
-    timeline: [practiceTrial],
+    timeline: [fixationCross, practiceTrial],
     timeline_variables: practiceStimuli,
     randomize_order: true,
     repetitions: 10,
