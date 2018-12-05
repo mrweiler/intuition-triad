@@ -37,9 +37,25 @@ let practiceBlockInstructions = {
     show_clickable_nav: true,
  };
 
+// Left side practice
+let practiceLeftSide = {
+    type: 'html-keyboard-response',
+    stimulus: '<div class="left">!</div>',
+    choices: ['s', 'l'],
+    trial_duration: 2000,
+  };
+
+// Right side practice
+let practiceRightSide = {
+    type: 'html-keyboard-response',
+    stimulus: '<div class="right">!</div>',
+    choices: ['s', 'l'],
+    trial_duration: 2000,
+  };
+
  // Practice trials
 let practiceTrials = {
-    timeline: [],
+    timeline: [practiceLeftSide, practiceRightSide],
     repetitions: 10,
     randomize_order: true,
   };

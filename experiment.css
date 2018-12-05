@@ -1,0 +1,11 @@
+.left {
+	font-size:60px;
+	position: absolute;
+	left: 10%;
+}
+
+.right {
+	font-size:60px;
+	position: absolute;
+	right: 10%;
+}
