@@ -127,12 +127,74 @@ let intuitionFixationCross = {
     trial_duration: 500,
 };
 
+// Intuition stimuli
+let intuitionStimuli = [
+    {intuitionStimulus: 'ink01.bmp'},
+    {intuitionStimulus: 'ink02.bmp'},
+    {intuitionStimulus: 'ink03.bmp'},
+    {intuitionStimulus: 'ink04.bmp'},
+    {intuitionStimulus: 'ink05.bmp'},
+    {intuitionStimulus: 'ink06.bmp'},
+    {intuitionStimulus: 'ink07.bmp'},
+    {intuitionStimulus: 'ink08.bmp'},
+    {intuitionStimulus: 'ink09.bmp'},
+    {intuitionStimulus: 'ink10.bmp'},
+    {intuitionStimulus: 'koh01.bmp'},
+    {intuitionStimulus: 'koh02.bmp'},
+    {intuitionStimulus: 'koh03.bmp'},
+    {intuitionStimulus: 'koh04.bmp'},
+    {intuitionStimulus: 'koh05.bmp'},
+    {intuitionStimulus: 'koh06.bmp'},
+    {intuitionStimulus: 'koh07.bmp'},
+    {intuitionStimulus: 'koh08.bmp'},
+    {intuitionStimulus: 'koh09.bmp'},
+    {intuitionStimulus: 'koh10.bmp'},
+];
+
+// Intuition triade
+let intuitionTriade = {
+    // type: 'image-keyboard-response',
+    type: 'html-keyboard-response',
+    stimulus: jsPsych.timelineVariable('intuitionStimulus'),
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 1500,
+};
+
+// Coherence judgement
+let intuitionCoherenceJudgement = {
+  type: 'html-keyboard-response',
+  stimulus: 'Press "s" for coherent or "l" for incoherent',
+  choices: ['s', 'l'],
+  trial_duration: 2000,
+};
+
+// Warning that reaction is too slow
+let intuitionTooSlow = {
+    type: 'html-keyboard-response',
+    stimulus: 'Please respond faster!',
+    trial_duration: 1000,
+};
+
+// Show warning in case that reaction was too slow
+let intuitionTooSlowNode = {
+    timeline: [intuitionTooSlow],
+    conditional_function: function() {
+        let data = jsPsych.data.get().last(1).values()[0];
+        if (data.key_press ==
+          jsPsych.pluginAPI.convertKeyCharacterToKeyCode('NULL')) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+};
+
 // Intuition procedure
 let intuitionProcedure = {
-    timeline: [intuitionFixationCross],
-    timeline_variables: null,
+    timeline: [intuitionFixationCross, intuitionTriade,
+      intuitionCoherenceJudgement, intuitionTooSlowNode],
+    timeline_variables: intuitionStimuli,
     randomize_order: true,
-    repetitions: 10,
 };
 
 // Intuition block
@@ -143,7 +205,8 @@ let intuitionBlock = {
 
 // Main
 jsPsych.init({
-    timeline: [instructions, practiceBlock, intuitionBlock],
+    // timeline: [instructions, practiceBlock, intuitionBlock],
+    timeline: [intuitionBlock],
     on_finish: function() {
         jsPsych.data.displayData();
     },
