@@ -105,9 +105,19 @@ let practiceBlock = {
 };
 
 
+/*
+    Intuition block
+*/
+
+// Intuition block
+let intuitionBlock = {
+  timeline: [],
+};
+
+
 // Main
 jsPsych.init({
-    timeline: [instructions, practiceBlock],
+    timeline: [instructions, practiceBlock, intuitionBlock],
     on_finish: function() {
         jsPsych.data.displayData();
     },
