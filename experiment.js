@@ -39,7 +39,7 @@ let practiceBlockInstructions = {
 };
 
 // Fixation cross
-let fixationCross = {
+let practiceFixationCross = {
     type: 'html-keyboard-response',
     stimulus: '<div class="fixation">+</div>',
     choices: jsPsych.NO_KEYS,
@@ -53,15 +53,15 @@ let practiceStimuli = [
 ];
 
 // Warning that reaction is too slow
-let tooSlow = {
+let practiceTooSlow = {
     type: 'html-keyboard-response',
     stimulus: 'Please respond faster!',
     trial_duration: 1000,
 };
 
 // Show warning in case that reaction was too slow
-let tooSlowNode = {
-    timeline: [tooSlow],
+let practiceTooSlowNode = {
+    timeline: [practiceTooSlow],
     conditional_function: function() {
         let data = jsPsych.data.get().last(1).values()[0];
         if (data.key_press ==
@@ -83,7 +83,7 @@ let practiceTrial = {
 
 // Practice procedure
 let practiceProcedure = {
-    timeline: [fixationCross, practiceTrial, tooSlowNode],
+    timeline: [practiceFixationCross, practiceTrial, practiceTooSlowNode],
     timeline_variables: practiceStimuli,
     randomize_order: true,
     repetitions: 10,
