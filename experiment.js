@@ -52,6 +52,27 @@ let practiceStimuli = [
     {stimulus: '<div class="right">!</div>'},
 ];
 
+// Warning that reaction is too slow
+let tooSlow = {
+    type: 'html-keyboard-response',
+    stimulus: 'Please respond faster!',
+    trial_duration: 1000,
+};
+
+// Show warning in case that reaction was too slow
+let tooSlowNode = {
+    timeline: [tooSlow],
+    conditional_function: function() {
+        let data = jsPsych.data.get().last(1).values()[0];
+        if (data.key_press ==
+          jsPsych.pluginAPI.convertKeyCharacterToKeyCode('NULL')) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+};
+
 // Practice trial
 let practiceTrial = {
     type: 'html-keyboard-response',
@@ -62,7 +83,7 @@ let practiceTrial = {
 
 // Practice procedure
 let practiceProcedure = {
-    timeline: [fixationCross, practiceTrial],
+    timeline: [fixationCross, practiceTrial, tooSlowNode],
     timeline_variables: practiceStimuli,
     randomize_order: true,
     repetitions: 10,
