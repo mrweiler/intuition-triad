@@ -89,9 +89,19 @@ let practiceProcedure = {
     repetitions: 10,
 };
 
-  // practice block
+// Practice block debriefing
+let practiceBlockDebriefing = {
+    type: 'instructions',
+    pages: [
+        'This is the practice block debriefing',
+    ],
+    show_clickable_nav: true,
+};
+
+// Practice block
 let practiceBlock = {
-    timeline: [practiceBlockInstructions, practiceProcedure],
+    timeline: [practiceBlockInstructions, practiceProcedure,
+      practiceBlockDebriefing],
 };
 
 
