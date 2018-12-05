@@ -108,4 +108,7 @@ let practiceBlock = {
 // Main
 jsPsych.init({
     timeline: [instructions, practiceBlock],
+    on_finish: function() {
+        jsPsych.data.displayData();
+    },
 });
