@@ -48,14 +48,14 @@ let practiceFixationCross = {
 
 // Practice stimuli
 let practiceStimuli = [
-    {stimulus: '<div class="left">!</div>'},
-    {stimulus: '<div class="right">!</div>'},
+    {practiceStimulus: '<div class="left">!</div>'},
+    {practiceStimulus: '<div class="right">!</div>'},
 ];
 
 // Practice trial
 let practiceTrial = {
     type: 'html-keyboard-response',
-    stimulus: jsPsych.timelineVariable('stimulus'),
+    stimulus: jsPsych.timelineVariable('practiceStimulus'),
     choices: ['s', 'l'],
     trial_duration: 2000,
 };
