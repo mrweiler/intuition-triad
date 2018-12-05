@@ -119,9 +119,17 @@ let intuitionBlockInstructions = {
     show_clickable_nav: true,
 };
 
+// Intuition procedure
+let intuitionProcedure = {
+    timeline: [],
+    timeline_variables: null,
+    randomize_order: true,
+    repetitions: 10,
+};
+
 // Intuition block
 let intuitionBlock = {
-  timeline: [intuitionBlockInstructions],
+  timeline: [intuitionBlockInstructions, intuitionProcedure],
 };
 
 
