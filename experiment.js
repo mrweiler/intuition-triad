@@ -109,9 +109,19 @@ let practiceBlock = {
     Intuition block
 */
 
+// Intuition block instructions
+let intuitionBlockInstructions = {
+    type: 'instructions',
+    pages: [
+        'First page with intuition block instructions',
+        'Second page with intuition block instructions',
+    ],
+    show_clickable_nav: true,
+};
+
 // Intuition block
 let intuitionBlock = {
-  timeline: [],
+  timeline: [intuitionBlockInstructions],
 };
 
 
