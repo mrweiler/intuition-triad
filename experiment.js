@@ -164,13 +164,11 @@ let intuitionTriade = {
 let intuitionCoherencePositions = ['left', 'right'];
 let intuitionCoherencePosition =
     jsPsych.randomization.sampleWithReplacement(intuitionCoherencePositions, 1);
-console.log(intuitionCoherencePosition);
 
 // Coherence judgement
 let intuitionCoherenceJudgement = {
     type: 'html-keyboard-response',
     stimulus: function() {
-        console.log(intuitionCoherencePosition);
         if (intuitionCoherencePosition == 'left') {
             return 'Press "s" for coherent or "l" for incoherent';
         } else {
