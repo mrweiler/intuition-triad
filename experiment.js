@@ -130,25 +130,7 @@ let intuitionFixationCross = {
 // Intuition stimuli
 let intuitionStimuli = [
     {intuitionStimulus: 'ink01.bmp'},
-    {intuitionStimulus: 'ink02.bmp'},
-    {intuitionStimulus: 'ink03.bmp'},
-    {intuitionStimulus: 'ink04.bmp'},
-    {intuitionStimulus: 'ink05.bmp'},
-    {intuitionStimulus: 'ink06.bmp'},
-    {intuitionStimulus: 'ink07.bmp'},
-    {intuitionStimulus: 'ink08.bmp'},
-    {intuitionStimulus: 'ink09.bmp'},
-    {intuitionStimulus: 'ink10.bmp'},
     {intuitionStimulus: 'koh01.bmp'},
-    {intuitionStimulus: 'koh02.bmp'},
-    {intuitionStimulus: 'koh03.bmp'},
-    {intuitionStimulus: 'koh04.bmp'},
-    {intuitionStimulus: 'koh05.bmp'},
-    {intuitionStimulus: 'koh06.bmp'},
-    {intuitionStimulus: 'koh07.bmp'},
-    {intuitionStimulus: 'koh08.bmp'},
-    {intuitionStimulus: 'koh09.bmp'},
-    {intuitionStimulus: 'koh10.bmp'},
 ];
 
 // Intuition triade
@@ -225,15 +207,27 @@ let intuitionSolutionWordNode = {
 // Intuition procedure
 let intuitionProcedure = {
     timeline: [intuitionFixationCross, intuitionTriade,
-      intuitionCoherenceJudgement, intuitionTooSlowNode,
-      intuitionSolutionWordNode],
+        intuitionCoherenceJudgement, intuitionTooSlowNode,
+        intuitionSolutionWordNode],
     timeline_variables: intuitionStimuli,
     randomize_order: true,
 };
 
+// Confidence rating
+let scaleConfidenceRating = ['0: Gar nicht', '1', '2', '3', '4', '5',
+    '6: Sehr stark'];
+let confidenceRating = {
+    type: 'survey-likert',
+    questions: [{
+        prompt: 'Die Aufgabe ist geschafft! Wenn Sie auf die Aufgabe '
+            + 'zur&uumlckblicken, wie sehr haben Sie Ihrer Intuition vertraut?',
+        labels: scaleConfidenceRating,
+    }],
+};
+
 // Intuition block
 let intuitionBlock = {
-  timeline: [intuitionBlockInstructions, intuitionProcedure],
+  timeline: [intuitionBlockInstructions, intuitionProcedure, confidenceRating],
 };
 
 
