@@ -160,12 +160,25 @@ let intuitionTriade = {
     trial_duration: 1500,
 };
 
+// Coherence position
+let intuitionCoherencePositions = ['left', 'right'];
+let intuitionCoherencePosition =
+    jsPsych.randomization.sampleWithReplacement(intuitionCoherencePositions, 1);
+console.log(intuitionCoherencePosition);
+
 // Coherence judgement
 let intuitionCoherenceJudgement = {
-  type: 'html-keyboard-response',
-  stimulus: 'Press "s" for coherent or "l" for incoherent',
-  choices: ['s', 'l'],
-  trial_duration: 2000,
+    type: 'html-keyboard-response',
+    stimulus: function() {
+        console.log(intuitionCoherencePosition);
+        if (intuitionCoherencePosition == 'left') {
+            return 'Press "s" for coherent or "l" for incoherent';
+        } else {
+            return 'Press "s" for incoherent or "l" for coherent';
+        }
+    },
+    choices: ['s', 'l'],
+    trial_duration: 2000,
 };
 
 // Warning that reaction is too slow
@@ -228,8 +241,8 @@ let intuitionBlock = {
 
 // Main
 jsPsych.init({
-    // timeline: [instructions, practiceBlock, intuitionBlock],
-    timeline: [intuitionBlock],
+    timeline: [instructions, practiceBlock, intuitionBlock],
+    // timeline: [intuitionBlock],
     on_finish: function() {
         jsPsych.data.displayData();
     },
