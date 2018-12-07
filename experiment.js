@@ -117,6 +117,18 @@ let practiceBlock = {
         - Examples: ink_01_high_r, koh_08_low_g, ink_27_low_b, ...
 */
 
+// Intuition and fluency stimuli pool
+let incoherenceStimuliPool = [
+    'ink_01', 'ink_02', 'ink_03', 'ink_04', 'ink_05',
+    'ink_06', 'ink_07', 'ink_08', 'ink_09', 'ink_10',
+    'ink_11', 'ink_12', 'ink_13', 'ink_14', 'ink_15',
+    'ink_16', 'ink_17', 'ink_18', 'ink_19', 'ink_20',
+    'ink_21', 'ink_22', 'ink_23', 'ink_24', 'ink_25',
+    'ink_26', 'ink_27', 'ink_28', 'ink_29', 'ink_30',
+    'ink_31', 'ink_32', 'ink_33', 'ink_34', 'ink_35',
+    'ink_36',
+];
+
 
 /*
     Intuition block
@@ -141,13 +153,12 @@ let intuitionFixationCross = {
 };
 
 // Intuition stimuli
+let intuitionStimuliPool = jsPsych.randomization.sampleWithoutReplacement(
+        incoherenceStimuliPool, 18);
+
 let intuitionStimuli = [
-    {intuitionStimulus: 'ink_01.bmp'},
-    // ...
-    {intuitionStimulus: 'ink_18.bmp'},
-    {intuitionStimulus: 'koh_01.bmp'},
-    // ...
-    {intuitionStimulus: 'koh_18.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[0] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[1] + '.bmp'},
 ];
 
 // Intuition triade
