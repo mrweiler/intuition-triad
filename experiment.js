@@ -73,7 +73,7 @@ let practiceTooSlowNode = {
     conditional_function: function() {
         let data = jsPsych.data.get().last(1).values()[0];
         if (data.key_press ==
-          jsPsych.pluginAPI.convertKeyCharacterToKeyCode('NULL')) {
+            jsPsych.pluginAPI.convertKeyCharacterToKeyCode('NULL')) {
             return true;
         } else {
             return false;
@@ -101,8 +101,21 @@ let practiceBlockDebriefing = {
 // Practice block
 let practiceBlock = {
     timeline: [practiceBlockInstructions, practiceProcedure,
-      practiceBlockDebriefing],
+        practiceBlockDebriefing],
 };
+
+/* TO DO
+    stimuli pool for intuition and fluency: 36 coherent and 36 incoherent
+    stimuli: ink_01, ..., ink_36 and koh_01, ..., koh_36
+    Intuition: take 18 coherent and 18 incoherent stimuli and add .bmp (sampling
+    without replacement).
+    Fluency:
+        - Take 18 coherent and 18 incoherent (aka the rest).
+        - Take 9 coherent and 9 incoherent and add 'high'.
+        - Take 9 coherent and 9 incoherent and add 'low'.
+        - Add either 'r', 'g', or 'b'.
+        - Examples: ink_01_high_r, koh_08_low_g, ink_27_low_b, ...
+*/
 
 
 /*
@@ -129,8 +142,12 @@ let intuitionFixationCross = {
 
 // Intuition stimuli
 let intuitionStimuli = [
-    {intuitionStimulus: 'ink01.bmp'},
-    {intuitionStimulus: 'koh01.bmp'},
+    {intuitionStimulus: 'ink_01.bmp'},
+    // ...
+    {intuitionStimulus: 'ink_18.bmp'},
+    {intuitionStimulus: 'koh_01.bmp'},
+    // ...
+    {intuitionStimulus: 'koh_18.bmp'},
 ];
 
 // Intuition triade
@@ -148,6 +165,7 @@ let intuitionCoherencePosition =
     jsPsych.randomization.sampleWithReplacement(intuitionCoherencePositions, 1);
 
 // Coherence judgement
+// TO DO: zusammenhängend / zusammengewürfelt unten links bzw. unten rechts.
 let intuitionCoherenceJudgement = {
     type: 'html-keyboard-response',
     stimulus: function() {
@@ -175,7 +193,7 @@ let intuitionTooSlowNode = {
     conditional_function: function() {
         let data = jsPsych.data.get().last(1).values()[0];
         if (data.key_press ==
-          jsPsych.pluginAPI.convertKeyCharacterToKeyCode('NULL')) {
+            jsPsych.pluginAPI.convertKeyCharacterToKeyCode('NULL')) {
             return true;
         } else {
             return false;
@@ -196,7 +214,7 @@ let intuitionSolutionWordNode = {
     conditional_function: function() {
         let data = jsPsych.data.get().last(1).values()[0];
         if (data.key_press ==
-          jsPsych.pluginAPI.convertKeyCharacterToKeyCode('NULL')) {
+            jsPsych.pluginAPI.convertKeyCharacterToKeyCode('NULL')) {
             return false;
         } else {
             return true;
@@ -227,9 +245,42 @@ let confidenceRating = {
 
 // Intuition block
 let intuitionBlock = {
-  timeline: [intuitionBlockInstructions, intuitionProcedure, confidenceRating],
+    timeline: [intuitionBlockInstructions, intuitionProcedure,
+    confidenceRating],
 };
 
+
+// Block Fluency
+  // 36 Trials (s. a.)
+    // Fixationskreuz (500)
+    // Triade: Stimulus (1500) ink_08_high_r.bmp, koh_12_low_g.bmp,
+    // (randomisiert)
+    // Coherence judgement: Eingabe kohärent/inkohärent (2000) (wie bei
+    // intuition)
+      // Zu langsam, falls keine Eingabe (wie oben)
+    // Solution word: Eingabe des Oberbegriffs (wie oben)
+
+// Rating: Wie sehr haben Sie Ihrer Intuition vertraut?
+
+
+// Block affektive Stimuli
+  // 48 Trials
+    // Fixationskreuz (500)
+    // Triade: Stimulus (1500) ink_08_neg.bmp, koh_12_pos.bmp, ...
+    // Coherence judgement: Eingabe kohärent/inkohärent (2000)
+      // Zu langsam, falls keine Eingabe innerhalb 2000 ms (300)
+    // Solution word: Eingabe des Oberbegriffs (8000)
+
+// Rating: Wie sehr haben Sie Ihrer Intuition vertraut?
+
+
+// Manipulationscheck
+// Ḱonnten Sie alle Triaden entziffern?
+    // Wenn nein: Wie viele Triaden konnten Sie nicht entziffern?
+
+
+// Debriefing
+// Danke! Wenden Sie sich bitte an die Versuchsleiterin.
 
 // Main
 jsPsych.init({
