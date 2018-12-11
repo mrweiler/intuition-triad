@@ -129,6 +129,17 @@ let incoherenceStimuliPool = [
     'ink_36',
 ];
 
+let coherenceStimuliPool = [
+    'koh_01', 'koh_02', 'koh_03', 'koh_04', 'koh_05',
+    'koh_06', 'koh_07', 'koh_08', 'koh_09', 'koh_10',
+    'koh_11', 'koh_12', 'koh_13', 'koh_14', 'koh_15',
+    'koh_16', 'koh_17', 'koh_18', 'koh_19', 'koh_20',
+    'koh_21', 'koh_22', 'koh_23', 'koh_24', 'koh_25',
+    'koh_26', 'koh_27', 'koh_28', 'koh_29', 'koh_30',
+    'koh_31', 'koh_32', 'koh_33', 'koh_34', 'koh_35',
+    'koh_36',
+];
+
 
 /*
     Intuition block
@@ -152,13 +163,55 @@ let intuitionFixationCross = {
     trial_duration: 500,
 };
 
-// Intuition stimuli
+// Add 18 incoherence stimuli to intuition stimuli
 let intuitionStimuliPool = jsPsych.randomization.sampleWithoutReplacement(
         incoherenceStimuliPool, 18);
 
+// Add 18 coherence stimuli to intuition stimuli
+intuitionStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
+        coherenceStimuliPool, 18));
+
+// Shuffle intuition stimuli
+intuitionStimuliPool = jsPsych.randomization.repeat(intuitionStimuliPool, 1);
+
+// Intuition stimuli
 let intuitionStimuli = [
     {intuitionStimulus: intuitionStimuliPool[0] + '.bmp'},
     {intuitionStimulus: intuitionStimuliPool[1] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[2] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[3] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[4] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[5] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[6] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[7] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[8] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[9] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[10] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[11] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[12] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[13] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[14] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[15] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[16] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[17] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[18] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[19] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[20] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[21] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[22] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[23] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[24] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[25] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[26] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[27] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[28] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[29] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[30] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[31] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[32] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[33] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[34] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[35] + '.bmp'},
 ];
 
 // Intuition triade
