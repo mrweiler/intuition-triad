@@ -357,6 +357,16 @@ let fluencyBlock = {
 // Ḱonnten Sie alle Triaden entziffern?
     // Wenn nein: Wie viele Triaden konnten Sie nicht entziffern?
 
+// Affective block instructions
+let affectiveBlockInstructions = {
+    type: 'instructions',
+    pages: [
+        'First page with affective block instructions',
+        'Second page with affective block instructions',
+    ],
+    show_clickable_nav: true,
+};
+
 // Affective block
 let affectiveBlock = {
     timeline: [affectiveBlockInstructions, affectiveProcedure,
