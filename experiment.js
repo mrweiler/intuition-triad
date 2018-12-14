@@ -376,19 +376,39 @@ let affectiveProcedure = {
 // Ḱonnten Sie alle Triaden entziffern?
     // Wenn nein: Wie viele Triaden konnten Sie nicht entziffern?
 
-// Manipulation check
-let manipulationCheck = {
+// Manipulation check 1
+let manipulationCheck1 = {
     type: 'html-keyboard-response',
     stimulus: 'Ḱonnten Sie alle Triaden entziffern? (j/n)',
     choices: ['j', 'n'],
     trial_duration: 8000,
 };
 
+// Manipulation check 2
+let manipulationCheck2 = {
+    type: 'survey-text',
+    questions: [{prompt: 'Wie viele Triaden konnten Sie nicht entziffern?'}],
+    trial_duration: 8000,
+};
+
+// Manipulation check 2 node
+let manipulationCheck2Node = {
+    timeline: [manipulationCheck2],
+    conditional_function: function() {
+        let data = jsPsych.data.get().last(1).values()[0];
+        if (data.key_press ==
+            jsPsych.pluginAPI.convertKeyCharacterToKeyCode('n')) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+};
 
 // Affective block
 let affectiveBlock = {
     timeline: [affectiveBlockInstructions, affectiveProcedure,
-        confidenceRating, manipulationCheck],
+        confidenceRating, manipulationCheck1, manipulationCheck2Node],
 };
 
 
