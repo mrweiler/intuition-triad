@@ -343,20 +343,6 @@ let fluencyBlock = {
     Affective block
 */
 
-// Block affektive Stimuli
-  // 48 Trials
-    // Fixationskreuz (500)
-    // Triade: Stimulus (1500) ink_08_neg.bmp, koh_12_pos.bmp, ...
-    // Coherence judgement: Eingabe kohärent/inkohärent (2000)
-      // Zu langsam, falls keine Eingabe innerhalb 2000 ms (300)
-    // Solution word: Eingabe des Oberbegriffs (8000)
-
-// Rating: Wie sehr haben Sie Ihrer Intuition vertraut?
-
-// Manipulationscheck
-// Ḱonnten Sie alle Triaden entziffern?
-    // Wenn nein: Wie viele Triaden konnten Sie nicht entziffern?
-
 // Affective block instructions
 let affectiveBlockInstructions = {
     type: 'instructions',
@@ -366,6 +352,8 @@ let affectiveBlockInstructions = {
     ],
     show_clickable_nav: true,
 };
+
+// TO DO: Stimulus (1500) ink_08_neg.bmp, koh_12_pos.bmp, 01-24
 
 // Affective triad
 let affectiveTriad = {
@@ -383,6 +371,10 @@ let affectiveProcedure = {
     timeline_variables: affectiveStimuli,
     randomize_order: true,
 };
+
+// TO DO: Manipulationscheck
+// Ḱonnten Sie alle Triaden entziffern?
+    // Wenn nein: Wie viele Triaden konnten Sie nicht entziffern?
 
 // Affective block
 let affectiveBlock = {
