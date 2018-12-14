@@ -383,13 +383,23 @@ let affectiveBlock = {
 };
 
 
+/*
+    Debriefing
+*/
+
 // Debriefing
-// Danke! Wenden Sie sich bitte an die Versuchsleiterin.
+let debriefing = {
+    // type: 'image-keyboard-response',
+    type: 'html-keyboard-response',
+    stimulus: 'Danke! Wenden Sie sich bitte an die Versuchsleiterin.',
+    choices: jsPsych.NO_KEYS,
+};
+
 
 // Main
 jsPsych.init({
     timeline: [instructions, practiceBlock, intuitionBlock, fluencyBlock,
-        affectiveBlock],
+        affectiveBlock, debriefing],
     // timeline: [intuitionBlock],
     on_finish: function() {
         jsPsych.data.displayData();
