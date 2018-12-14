@@ -104,31 +104,9 @@ let practiceBlock = {
         practiceBlockDebriefing],
 };
 
-/* TO DO
-    stimuli pool for intuition and fluency: 36 coherent and 36 incoherent
-    stimuli: ink_01, ..., ink_36 and koh_01, ..., koh_36
-    Intuition: take 18 coherent and 18 incoherent stimuli and add .bmp (sampling
-    without replacement).
-    Fluency:
-        - Take 18 coherent and 18 incoherent (aka the rest).
-        - Take 9 coherent and 9 incoherent and add 'high'.
-        - Take 9 coherent and 9 incoherent and add 'low'.
-        - Add either 'r', 'g', or 'b'.
-        - Examples: ink_01_high_r, koh_08_low_g, ink_27_low_b, ...
-*/
 
 // Intuition and fluency stimuli pool
-let incoherenceStimuliPool = [
-    'ink_01', 'ink_02', 'ink_03', 'ink_04', 'ink_05',
-    'ink_06', 'ink_07', 'ink_08', 'ink_09', 'ink_10',
-    'ink_11', 'ink_12', 'ink_13', 'ink_14', 'ink_15',
-    'ink_16', 'ink_17', 'ink_18', 'ink_19', 'ink_20',
-    'ink_21', 'ink_22', 'ink_23', 'ink_24', 'ink_25',
-    'ink_26', 'ink_27', 'ink_28', 'ink_29', 'ink_30',
-    'ink_31', 'ink_32', 'ink_33', 'ink_34', 'ink_35',
-    'ink_36',
-];
-
+// 36 coherence stimuli
 let coherenceStimuliPool = [
     'koh_01', 'koh_02', 'koh_03', 'koh_04', 'koh_05',
     'koh_06', 'koh_07', 'koh_08', 'koh_09', 'koh_10',
@@ -138,6 +116,18 @@ let coherenceStimuliPool = [
     'koh_26', 'koh_27', 'koh_28', 'koh_29', 'koh_30',
     'koh_31', 'koh_32', 'koh_33', 'koh_34', 'koh_35',
     'koh_36',
+];
+
+// 36 incoherence stimuli
+let incoherenceStimuliPool = [
+    'ink_01', 'ink_02', 'ink_03', 'ink_04', 'ink_05',
+    'ink_06', 'ink_07', 'ink_08', 'ink_09', 'ink_10',
+    'ink_11', 'ink_12', 'ink_13', 'ink_14', 'ink_15',
+    'ink_16', 'ink_17', 'ink_18', 'ink_19', 'ink_20',
+    'ink_21', 'ink_22', 'ink_23', 'ink_24', 'ink_25',
+    'ink_26', 'ink_27', 'ink_28', 'ink_29', 'ink_30',
+    'ink_31', 'ink_32', 'ink_33', 'ink_34', 'ink_35',
+    'ink_36',
 ];
 
 
@@ -163,13 +153,13 @@ let intuitionFixationCross = {
     trial_duration: 500,
 };
 
-// Add 18 incoherence stimuli to intuition stimuli
+// Add 18 coherence stimuli to intuition stimuli pool
 let intuitionStimuliPool = jsPsych.randomization.sampleWithoutReplacement(
-        incoherenceStimuliPool, 18);
+    coherenceStimuliPool, 18);
 
-// Add 18 coherence stimuli to intuition stimuli
+// Add 18 incoherence stimuli to intuition stimuli pool
 intuitionStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
-        coherenceStimuliPool, 18));
+    incoherenceStimuliPool, 18));
 
 // Shuffle intuition stimuli
 intuitionStimuliPool = jsPsych.randomization.repeat(intuitionStimuliPool, 1);
@@ -314,15 +304,57 @@ let intuitionBlock = {
 };
 
 
-// Block Fluency
+/* Block Fluency
   // 36 Trials (s. a.)
+  /* TO DO
+  Fluency:
+        - Examples: ink_01_high_r, koh_08_low_g, ink_27_low_b, ...
+
     // Fixationskreuz (500)
     // Triade: Stimulus (1500) ink_08_high_r.bmp, koh_12_low_g.bmp,
     // (randomisiert)
     // Coherence judgement: Eingabe kohärent/inkohärent (2000) (wie bei
     // intuition)
       // Zu langsam, falls keine Eingabe (wie oben)
+    / Solution word: Eingabe des Oberbegriffs (wie oben)
+*/
+
+/*
+    Fluency block
+*/
+
+// Take 9 coherence stimuli to the high fluency stimuli pool
+let highFluencyStimuliPool =
+    jsPsych.randomization.sampleWithoutReplacement(coherenceStimuliPool, 9);
+
+// Add 9 incoherence stimuli to high fluency stimuli pool
+highFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
+        incoherenceStimuliPool, 9));
+
+// TODO: Add 'high' to high fluency stimuli pool
+
+
+// Take 9 coherence stimuli to the low fluency stimuli pool
+let lowFluencyStimuliPool =
+    jsPsych.randomization.sampleWithoutReplacement(coherenceStimuliPool, 9);
+
+// Add 9 incoherence stimuli to low fluency stimuli pool
+lowFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
+        incoherenceStimuliPool, 9));
+
+// TODO: Add 'low' to high fluency stimuli pool
+
+// TODO: Add either 'r', 'g', or 'b' to all fluency stimuli
+
+// TODO: Fixationcross (500)
+
+// TODO: Triad: Stimulus (1500) ink_08_high_r.bmp, koh_12_low_g.bmp,
+
+// TODO: Coherence judgement: Eingabe kohärent/inkohärent (2000) (wie bei
+    // intuition)
+      // Zu langsam, falls keine Eingabe (wie oben)
     // Solution word: Eingabe des Oberbegriffs (wie oben)
+
 
 // Rating: Wie sehr haben Sie Ihrer Intuition vertraut?
 
