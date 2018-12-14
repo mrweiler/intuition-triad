@@ -367,6 +367,14 @@ let affectiveBlockInstructions = {
     show_clickable_nav: true,
 };
 
+// Affective procedure
+let affectiveProcedure = {
+    timeline: [fixationCross, affectiveTriad, coherenceJudgement,
+        tooSlowNode, solutionWordNode],
+    timeline_variables: affectiveStimuli,
+    randomize_order: true,
+};
+
 // Affective block
 let affectiveBlock = {
     timeline: [affectiveBlockInstructions, affectiveProcedure,
