@@ -390,6 +390,10 @@ let affectiveBlockInstructions = {
 
 // Affective stimuli
 let affectiveStimuli = [
+    {affectiveStimulus: 'ink_01_neg' + '.bmp'},
+    {affectiveStimulus: 'ink_02_pos' + '.bmp'},
+    {affectiveStimulus: 'koh_03_neg' + '.bmp'},
+    {affectiveStimulus: 'koh_04_pos' + '.bmp'},
 ];
 
 // Affective triad
