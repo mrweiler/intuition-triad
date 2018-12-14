@@ -331,6 +331,12 @@ lowFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
 
 // Fluency stimuli
 let fluencyStimuli = [
+    {fluencyStimulus: 'ink_01_low_r' + '.bmp'},
+    {fluencyStimulus: 'ink_02_high_g' + '.bmp'},
+    {fluencyStimulus: 'ink_03_low_b' + '.bmp'},
+    {fluencyStimulus: 'koh_04_high_r' + '.bmp'},
+    {fluencyStimulus: 'koh_05_low_g' + '.bmp'},
+    {fluencyStimulus: 'koh_06_high_b' + '.bmp'},
 ];
 
 // Fluency triad
