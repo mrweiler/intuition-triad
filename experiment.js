@@ -367,6 +367,15 @@ let affectiveBlockInstructions = {
     show_clickable_nav: true,
 };
 
+// Affective triad
+let affectiveTriad = {
+    // type: 'image-keyboard-response',
+    type: 'html-keyboard-response',
+    stimulus: jsPsych.timelineVariable('affectiveStimulus'),
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 1500,
+};
+
 // Affective procedure
 let affectiveProcedure = {
     timeline: [fixationCross, affectiveTriad, coherenceJudgement,
