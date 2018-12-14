@@ -353,10 +353,6 @@ lowFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
 
 // TODO: Add either 'r', 'g', or 'b' to all fluency stimuli
 
-// TODO: Fixationcross (500)
-
-// TODO: Triad: Stimulus (1500) ink_08_high_r.bmp, koh_12_low_g.bmp,
-
 // TODO: Coherence judgement: Eingabe kohärent/inkohärent (2000) (wie bei
     // intuition)
       // Zu langsam, falls keine Eingabe (wie oben)
@@ -364,6 +360,15 @@ lowFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
 
 
 // Rating: Wie sehr haben Sie Ihrer Intuition vertraut?
+
+// Fluency triad
+let fluencyTriad = {
+    // type: 'image-keyboard-response',
+    type: 'html-keyboard-response',
+    stimulus: jsPsych.timelineVariable('fluencyStimulus'),
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 1500,
+};
 
 // Fluency procedure
 let fluencyProcedure = {
