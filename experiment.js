@@ -403,10 +403,6 @@ let affectiveProcedure = {
     randomize_order: true,
 };
 
-// TO DO: Manipulationscheck
-// Ḱonnten Sie alle Triaden entziffern?
-    // Wenn nein: Wie viele Triaden konnten Sie nicht entziffern?
-
 // Manipulation check 1
 let manipulationCheck1 = {
     type: 'html-keyboard-response',
