@@ -213,8 +213,8 @@ let intuitionStimuli = [
     {intuitionStimulus: intuitionStimuliPool[35] + '.bmp'},
 ];
 
-// Intuition triade
-let intuitionTriade = {
+// Intuition triad
+let intuitionTriad = {
     // type: 'image-keyboard-response',
     type: 'html-keyboard-response',
     stimulus: jsPsych.timelineVariable('intuitionStimulus'),
@@ -287,7 +287,7 @@ let intuitionSolutionWordNode = {
 
 // Intuition procedure
 let intuitionProcedure = {
-    timeline: [fixationCross, intuitionTriade,
+    timeline: [fixationCross, intuitionTriad,
         intuitionCoherenceJudgement, intuitionTooSlowNode,
         intuitionSolutionWordNode],
     timeline_variables: intuitionStimuli,
