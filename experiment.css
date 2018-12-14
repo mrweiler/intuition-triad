@@ -1,12 +1,12 @@
 .bottomleft {
-	font-size:60px;
+	font-size:20px;
 	position: absolute;
 	bottom: 10%;
 	left: 10%;
 }
 
 .bottomright {
-	font-size:60px;
+	font-size:20px;
 	position: absolute;
 	bottom: 10%;
 	right: 10%;
