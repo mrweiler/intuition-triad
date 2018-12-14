@@ -276,10 +276,19 @@ let intuitionProcedure = {
     randomize_order: true,
 };
 
+// Intuition block debriefing
+let intuitionBlockDebriefing = {
+    type: 'instructions',
+    pages: [
+        'This is the intuition block debriefing',
+    ],
+    show_clickable_nav: true,
+};
+
 // Intuition block
 let intuitionBlock = {
     timeline: [intuitionBlockInstructions, intuitionProcedure,
-    confidenceRating],
+    confidenceRating, intuitionBlockDebriefing],
 };
 
 
