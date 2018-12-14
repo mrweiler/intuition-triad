@@ -350,9 +350,19 @@ let fluencyProcedure = {
     randomize_order: true,
 };
 
+// Fluency block debriefing
+let fluencyBlockDebriefing = {
+    type: 'instructions',
+    pages: [
+        'This is the fluency block debriefing',
+    ],
+    show_clickable_nav: true,
+};
+
 // Fluency block
 let fluencyBlock = {
-    timeline: [fluencyBlockInstructions, fluencyProcedure, confidenceRating],
+    timeline: [fluencyBlockInstructions, fluencyProcedure, confidenceRating,
+        fluencyBlockDebriefing],
 };
 
 
