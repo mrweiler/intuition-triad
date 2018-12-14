@@ -1,27 +1,25 @@
-.bottomleft {
+.coherenceleft {
 	font-size:20px;
 	position: absolute;
-	bottom: 10%;
 	left: 10%;
 }
 
-.bottomright {
+.coherenceright {
 	font-size:20px;
 	position: absolute;
-	bottom: 10%;
 	right: 10%;
 }
 .fixation {
 	font-size:60px;
 }
 
-.left {
+.practiceleft {
 	font-size:60px;
 	position: absolute;
 	left: 10%;
 }
 
-.right {
+.practiceright {
 	font-size:60px;
 	position: absolute;
 	right: 10%;

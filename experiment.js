@@ -35,15 +35,16 @@ let coherencePosition =
     jsPsych.randomization.sampleWithReplacement(coherencePositions, 1);
 
 // Coherence judgement
+// TO DO: stimuli doch mittig statt unten
 let coherenceJudgement = {
     type: 'html-keyboard-response',
     stimulus: function() {
         if (coherencePosition == 'left') {
-            return '<div class="bottomleft">zusammenh&aumlngend</div>'
-                +'<div class="bottomright">zusammengew&uumlrfelt</div>';
+            return '<div class="coherenceleft">zusammenh&aumlngend</div>'
+                +'<div class="coherenceright">zusammengew&uumlrfelt</div>';
         } else {
-            return '<div class="bottomleft">zusammengew&uumlrfelt</div>'
-                +'<div class="bottomright">zusammenh&aumlngend</div>';
+            return '<div class="coherenceleft">zusammengew&uumlrfelt</div>'
+                +'<div class="coherenceright">zusammenh&aumlngend</div>';
         }
     },
     choices: ['s', 'l'],
@@ -129,8 +130,8 @@ let practiceBlockInstructions = {
 
 // Practice stimuli
 let practiceStimuli = [
-    {practiceStimulus: '<div class="left">!</div>'},
-    {practiceStimulus: '<div class="right">!</div>'},
+    {practiceStimulus: '<div class="practiceleft">!</div>'},
+    {practiceStimulus: '<div class="practiceright">!</div>'},
 ];
 
 // Practice trial
@@ -220,6 +221,7 @@ intuitionStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
 intuitionStimuliPool = jsPsych.randomization.repeat(intuitionStimuliPool, 1);
 
 // Intuition stimuli
+// TO DO: add folder 'img/', 'png' instead 'bmp'
 let intuitionStimuli = [
     {intuitionStimulus: intuitionStimuliPool[0] + '.bmp'},
     {intuitionStimulus: intuitionStimuliPool[1] + '.bmp'},
@@ -365,10 +367,37 @@ let fluencyBlockDebriefing = {
     show_clickable_nav: true,
 };
 
+// Manipulation check 1
+let manipulationCheck1 = {
+    type: 'html-keyboard-response',
+    stimulus: 'Konnten Sie alle Triaden entziffern? <br>(Dr&uumlcken Sie "j" f&uumlr ja und "n" f&uumlr nein)',
+    choices: ['j', 'n'],
+};
+
+// Manipulation check 2
+let manipulationCheck2 = {
+    type: 'survey-text',
+    questions: [{prompt: 'Wie viele Triaden konnten Sie nicht entziffern?'}],
+};
+
+// Manipulation check 2 node
+let manipulationCheck2Node = {
+    timeline: [manipulationCheck2],
+    conditional_function: function() {
+        let data = jsPsych.data.get().last(1).values()[0];
+        if (data.key_press ==
+            jsPsych.pluginAPI.convertKeyCharacterToKeyCode('n')) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+};
+
 // Fluency block
 let fluencyBlock = {
     timeline: [fluencyBlockInstructions, fluencyProcedure, confidenceRating,
-        fluencyBlockDebriefing],
+        manipulationCheck1, manipulationCheck2Node, fluencyBlockDebriefing],
 };
 
 
@@ -413,36 +442,8 @@ let affectiveProcedure = {
     randomize_order: true,
 };
 
-// Manipulation check 1
-let manipulationCheck1 = {
-    type: 'html-keyboard-response',
-    stimulus: 'Ḱonnten Sie alle Triaden entziffern? (j/n)',
-    choices: ['j', 'n'],
-    trial_duration: 8000,
-};
-
-// Manipulation check 2
-let manipulationCheck2 = {
-    type: 'survey-text',
-    questions: [{prompt: 'Wie viele Triaden konnten Sie nicht entziffern?'}],
-    trial_duration: 8000,
-};
-
-// Manipulation check 2 node
-let manipulationCheck2Node = {
-    timeline: [manipulationCheck2],
-    conditional_function: function() {
-        let data = jsPsych.data.get().last(1).values()[0];
-        if (data.key_press ==
-            jsPsych.pluginAPI.convertKeyCharacterToKeyCode('n')) {
-            return true;
-        } else {
-            return false;
-        }
-    },
-};
-
 // Affective block debriefing
+// TO DO: html-keyboard-response instead of instructions
 let affectiveBlockDebriefing = {
     type: 'instructions',
     pages: [
@@ -454,8 +455,7 @@ let affectiveBlockDebriefing = {
 // Affective block
 let affectiveBlock = {
     timeline: [affectiveBlockInstructions, affectiveProcedure,
-        confidenceRating, manipulationCheck1, manipulationCheck2Node,
-        affectiveBlockDebriefing],
+        confidenceRating, affectiveBlockDebriefing],
 };
 
 
