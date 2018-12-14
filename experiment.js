@@ -355,6 +355,11 @@ lowFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
 
 // Rating: Wie sehr haben Sie Ihrer Intuition vertraut?
 
+// Intuition block
+let fluencyBlock = {
+    timeline: [fluencyBlockInstructions, fluencyProcedure, confidenceRating],
+};
+
 
 // Block affektive Stimuli
   // 48 Trials
@@ -377,7 +382,7 @@ lowFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
 
 // Main
 jsPsych.init({
-    timeline: [instructions, practiceBlock, intuitionBlock],
+    timeline: [instructions, practiceBlock, intuitionBlock, fluencyBlock],
     // timeline: [intuitionBlock],
     on_finish: function() {
         jsPsych.data.displayData();
