@@ -331,14 +331,6 @@ lowFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
 
 // TODO: Add either 'r', 'g', or 'b' to all fluency stimuli
 
-// TODO: Coherence judgement: Eingabe kohärent/inkohärent (2000) (wie bei
-    // intuition)
-      // Zu langsam, falls keine Eingabe (wie oben)
-    // Solution word: Eingabe des Oberbegriffs (wie oben)
-
-
-// Rating: Wie sehr haben Sie Ihrer Intuition vertraut?
-
 // Fluency triad
 let fluencyTriad = {
     // type: 'image-keyboard-response',
