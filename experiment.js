@@ -221,44 +221,44 @@ intuitionStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
 intuitionStimuliPool = jsPsych.randomization.repeat(intuitionStimuliPool, 1);
 
 // Intuition stimuli
-// TO DO: add folder 'img/', 'png' instead 'bmp'
+// TO DO: add folder 'img/'
 let intuitionStimuli = [
-    {intuitionStimulus: intuitionStimuliPool[0] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[1] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[2] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[3] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[4] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[5] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[6] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[7] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[8] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[9] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[10] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[11] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[12] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[13] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[14] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[15] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[16] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[17] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[18] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[19] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[20] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[21] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[22] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[23] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[24] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[25] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[26] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[27] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[28] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[29] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[30] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[31] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[32] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[33] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[34] + '.bmp'},
-    {intuitionStimulus: intuitionStimuliPool[35] + '.bmp'},
+    {intuitionStimulus: intuitionStimuliPool[0] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[1] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[2] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[3] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[4] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[5] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[6] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[7] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[8] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[9] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[10] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[11] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[12] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[13] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[14] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[15] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[16] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[17] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[18] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[19] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[20] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[21] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[22] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[23] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[24] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[25] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[26] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[27] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[28] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[29] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[30] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[31] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[32] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[33] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[34] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[35] + '.png'},
 ];
 
 // Intuition triad
@@ -333,12 +333,12 @@ lowFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
 
 // Fluency stimuli
 let fluencyStimuli = [
-    {fluencyStimulus: 'ink_01_low_r' + '.bmp'},
-    {fluencyStimulus: 'ink_02_high_g' + '.bmp'},
-    {fluencyStimulus: 'ink_03_low_b' + '.bmp'},
-    {fluencyStimulus: 'koh_04_high_r' + '.bmp'},
-    {fluencyStimulus: 'koh_05_low_g' + '.bmp'},
-    {fluencyStimulus: 'koh_06_high_b' + '.bmp'},
+    {fluencyStimulus: 'ink_01_low_r' + '.png'},
+    {fluencyStimulus: 'ink_02_high_g' + '.png'},
+    {fluencyStimulus: 'ink_03_low_b' + '.png'},
+    {fluencyStimulus: 'koh_04_high_r' + '.png'},
+    {fluencyStimulus: 'koh_05_low_g' + '.png'},
+    {fluencyStimulus: 'koh_06_high_b' + '.png'},
 ];
 
 // Fluency triad
@@ -370,7 +370,8 @@ let fluencyBlockDebriefing = {
 // Manipulation check 1
 let manipulationCheck1 = {
     type: 'html-keyboard-response',
-    stimulus: 'Konnten Sie alle Triaden entziffern? <br>(Dr&uumlcken Sie "j" f&uumlr ja und "n" f&uumlr nein)',
+    stimulus: 'Konnten Sie alle Triaden entziffern? <br>(Dr&uumlcken Sie "j" '
+        + 'f&uumlr ja und "n" f&uumlr nein)',
     choices: ['j', 'n'],
 };
 
@@ -415,14 +416,14 @@ let affectiveBlockInstructions = {
     show_clickable_nav: true,
 };
 
-// TO DO: Stimulus (1500) ink_08_neg.bmp, koh_12_pos.bmp, 01-24
+// TO DO: Stimulus (1500) ink_08_neg.png, koh_12_pos.png, 01-24
 
 // Affective stimuli
 let affectiveStimuli = [
-    {affectiveStimulus: 'ink_01_neg' + '.bmp'},
-    {affectiveStimulus: 'ink_02_pos' + '.bmp'},
-    {affectiveStimulus: 'koh_03_neg' + '.bmp'},
-    {affectiveStimulus: 'koh_04_pos' + '.bmp'},
+    {affectiveStimulus: 'ink_01_neg' + '.png'},
+    {affectiveStimulus: 'ink_02_pos' + '.png'},
+    {affectiveStimulus: 'koh_03_neg' + '.png'},
+    {affectiveStimulus: 'koh_04_pos' + '.png'},
 ];
 
 // Affective triad
