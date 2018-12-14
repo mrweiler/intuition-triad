@@ -49,6 +49,28 @@ let coherenceJudgement = {
     trial_duration: 2000,
 };
 
+// Warning that reaction is too slow
+let tooSlow = {
+    type: 'html-keyboard-response',
+    stimulus: 'Please respond faster!',
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 1000,
+};
+
+// Show warning in case that reaction was too slow
+let tooSlowNode = {
+    timeline: [tooSlow],
+    conditional_function: function() {
+        let data = jsPsych.data.get().last(1).values()[0];
+        if (data.key_press ==
+            jsPsych.pluginAPI.convertKeyCharacterToKeyCode('NULL')) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+};
+
 
 /*
     Instruction block
@@ -97,30 +119,9 @@ let practiceTrial = {
     trial_duration: 2000,
 };
 
-// Warning that reaction is too slow
-let practiceTooSlow = {
-    type: 'html-keyboard-response',
-    stimulus: 'Please respond faster!',
-    trial_duration: 1000,
-};
-
-// Show warning in case that reaction was too slow
-let practiceTooSlowNode = {
-    timeline: [practiceTooSlow],
-    conditional_function: function() {
-        let data = jsPsych.data.get().last(1).values()[0];
-        if (data.key_press ==
-            jsPsych.pluginAPI.convertKeyCharacterToKeyCode('NULL')) {
-            return true;
-        } else {
-            return false;
-        }
-    },
-};
-
 // Practice procedure
 let practiceProcedure = {
-    timeline: [fixationCross, practiceTrial, practiceTooSlowNode],
+    timeline: [fixationCross, practiceTrial, tooSlowNode],
     timeline_variables: practiceStimuli,
     randomize_order: true,
     repetitions: 10,
@@ -242,28 +243,6 @@ let intuitionTriad = {
     trial_duration: 1500,
 };
 
-// Warning that reaction is too slow
-let intuitionTooSlow = {
-    type: 'html-keyboard-response',
-    stimulus: 'Please respond faster!',
-    choices: jsPsych.NO_KEYS,
-    trial_duration: 1000,
-};
-
-// Show warning in case that reaction was too slow
-let intuitionTooSlowNode = {
-    timeline: [intuitionTooSlow],
-    conditional_function: function() {
-        let data = jsPsych.data.get().last(1).values()[0];
-        if (data.key_press ==
-            jsPsych.pluginAPI.convertKeyCharacterToKeyCode('NULL')) {
-            return true;
-        } else {
-            return false;
-        }
-    },
-};
-
 // Intuition solution word
 let intuitionSolutionWord = {
     type: 'survey-text',
@@ -288,7 +267,7 @@ let intuitionSolutionWordNode = {
 // Intuition procedure
 let intuitionProcedure = {
     timeline: [fixationCross, intuitionTriad,
-        coherenceJudgement, intuitionTooSlowNode,
+        coherenceJudgement, tooSlowNode,
         intuitionSolutionWordNode],
     timeline_variables: intuitionStimuli,
     randomize_order: true,
@@ -373,7 +352,7 @@ let fluencyTriad = {
 // Fluency procedure
 let fluencyProcedure = {
     timeline: [fixationCross, fluencyTriad, coherenceJudgement,
-        fluencyTooSlowNode, fluencySolutionWordNode],
+        tooSlowNode, fluencySolutionWordNode],
     timeline_variables: fluencyStimuli,
     randomize_order: true,
 };
