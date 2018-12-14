@@ -376,10 +376,19 @@ let affectiveProcedure = {
 // Ḱonnten Sie alle Triaden entziffern?
     // Wenn nein: Wie viele Triaden konnten Sie nicht entziffern?
 
+// Manipulation check
+let manipulationCheck = {
+    type: 'html-keyboard-response',
+    stimulus: 'Ḱonnten Sie alle Triaden entziffern? (j/n)',
+    choices: ['j', 'n'],
+    trial_duration: 8000,
+};
+
+
 // Affective block
 let affectiveBlock = {
     timeline: [affectiveBlockInstructions, affectiveProcedure,
-        confidenceRating],
+        confidenceRating, manipulationCheck],
 };
 
 
