@@ -6,6 +6,19 @@
 
 
 /*
+    General components
+*/
+
+// Fixation cross
+let fixationCross = {
+    type: 'html-keyboard-response',
+    stimulus: '<div class="fixation">+</div>',
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 500,
+};
+
+
+/*
     Instruction block
     Show instructions on several pages.
 */
@@ -36,14 +49,6 @@ let practiceBlockInstructions = {
         'Second page with practice block instructions',
     ],
     show_clickable_nav: true,
-};
-
-// Practice fixation cross
-let practiceFixationCross = {
-    type: 'html-keyboard-response',
-    stimulus: '<div class="fixation">+</div>',
-    choices: jsPsych.NO_KEYS,
-    trial_duration: 500,
 };
 
 // Practice stimuli
@@ -83,7 +88,7 @@ let practiceTooSlowNode = {
 
 // Practice procedure
 let practiceProcedure = {
-    timeline: [practiceFixationCross, practiceTrial, practiceTooSlowNode],
+    timeline: [fixationCross, practiceTrial, practiceTooSlowNode],
     timeline_variables: practiceStimuli,
     randomize_order: true,
     repetitions: 10,
@@ -143,14 +148,6 @@ let intuitionBlockInstructions = {
         'Second page with intuition block instructions',
     ],
     show_clickable_nav: true,
-};
-
-// Intuition fixation cross
-let intuitionFixationCross = {
-    type: 'html-keyboard-response',
-    stimulus: '<div class="fixation">+</div>',
-    choices: jsPsych.NO_KEYS,
-    trial_duration: 500,
 };
 
 // Add 18 coherence stimuli to intuition stimuli pool
@@ -278,7 +275,7 @@ let intuitionSolutionWordNode = {
 
 // Intuition procedure
 let intuitionProcedure = {
-    timeline: [intuitionFixationCross, intuitionTriade,
+    timeline: [fixationCross, intuitionTriade,
         intuitionCoherenceJudgement, intuitionTooSlowNode,
         intuitionSolutionWordNode],
     timeline_variables: intuitionStimuli,
