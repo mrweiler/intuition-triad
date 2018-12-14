@@ -29,6 +29,26 @@ let confidenceRating = {
     }],
 };
 
+// Coherence position
+let coherencePositions = ['left', 'right'];
+let coherencePosition =
+    jsPsych.randomization.sampleWithReplacement(coherencePositions, 1);
+
+// Coherence judgement
+// TO DO: zusammenhängend / zusammengewürfelt unten links bzw. unten rechts.
+let coherenceJudgement = {
+    type: 'html-keyboard-response',
+    stimulus: function() {
+        if (coherencePosition == 'left') {
+            return 'Press "s" for coherent or "l" for incoherent';
+        } else {
+            return 'Press "s" for incoherent or "l" for coherent';
+        }
+    },
+    choices: ['s', 'l'],
+    trial_duration: 2000,
+};
+
 
 /*
     Instruction block
@@ -222,26 +242,6 @@ let intuitionTriad = {
     trial_duration: 1500,
 };
 
-// Coherence position
-let intuitionCoherencePositions = ['left', 'right'];
-let intuitionCoherencePosition =
-    jsPsych.randomization.sampleWithReplacement(intuitionCoherencePositions, 1);
-
-// Coherence judgement
-// TO DO: zusammenhängend / zusammengewürfelt unten links bzw. unten rechts.
-let intuitionCoherenceJudgement = {
-    type: 'html-keyboard-response',
-    stimulus: function() {
-        if (intuitionCoherencePosition == 'left') {
-            return 'Press "s" for coherent or "l" for incoherent';
-        } else {
-            return 'Press "s" for incoherent or "l" for coherent';
-        }
-    },
-    choices: ['s', 'l'],
-    trial_duration: 2000,
-};
-
 // Warning that reaction is too slow
 let intuitionTooSlow = {
     type: 'html-keyboard-response',
@@ -288,7 +288,7 @@ let intuitionSolutionWordNode = {
 // Intuition procedure
 let intuitionProcedure = {
     timeline: [fixationCross, intuitionTriad,
-        intuitionCoherenceJudgement, intuitionTooSlowNode,
+        coherenceJudgement, intuitionTooSlowNode,
         intuitionSolutionWordNode],
     timeline_variables: intuitionStimuli,
     randomize_order: true,
@@ -372,9 +372,8 @@ let fluencyTriad = {
 
 // Fluency procedure
 let fluencyProcedure = {
-    timeline: [fixationCross, fluencyTriad,
-        fluencyCoherenceJudgement, fluencyTooSlowNode,
-        fluencySolutionWordNode],
+    timeline: [fixationCross, fluencyTriad, coherenceJudgement,
+        fluencyTooSlowNode, fluencySolutionWordNode],
     timeline_variables: fluencyStimuli,
     randomize_order: true,
 };
