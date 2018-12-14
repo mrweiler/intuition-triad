@@ -365,6 +365,15 @@ lowFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
 
 // Rating: Wie sehr haben Sie Ihrer Intuition vertraut?
 
+// Fluency procedure
+let fluencyProcedure = {
+    timeline: [fixationCross, fluencyTriad,
+        fluencyCoherenceJudgement, fluencyTooSlowNode,
+        fluencySolutionWordNode],
+    timeline_variables: fluencyStimuli,
+    randomize_order: true,
+};
+
 // Fluency block
 let fluencyBlock = {
     timeline: [fluencyBlockInstructions, fluencyProcedure, confidenceRating],
