@@ -320,6 +320,16 @@ let intuitionBlock = {
     Fluency block
 */
 
+// Fluency block instructions
+let fluencyBlockInstructions = {
+    type: 'instructions',
+    pages: [
+        'First page with fluency block instructions',
+        'Second page with fluency block instructions',
+    ],
+    show_clickable_nav: true,
+};
+
 // Take 9 coherence stimuli to the high fluency stimuli pool
 let highFluencyStimuliPool =
     jsPsych.randomization.sampleWithoutReplacement(coherenceStimuliPool, 9);
@@ -355,7 +365,7 @@ lowFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
 
 // Rating: Wie sehr haben Sie Ihrer Intuition vertraut?
 
-// Intuition block
+// Fluency block
 let fluencyBlock = {
     timeline: [fluencyBlockInstructions, fluencyProcedure, confidenceRating],
 };
