@@ -279,21 +279,6 @@ let intuitionBlock = {
 };
 
 
-/* Block Fluency
-  // 36 Trials (s. a.)
-  /* TO DO
-  Fluency:
-        - Examples: ink_01_high_r, koh_08_low_g, ink_27_low_b, ...
-
-    // Fixationskreuz (500)
-    // Triade: Stimulus (1500) ink_08_high_r.bmp, koh_12_low_g.bmp,
-    // (randomisiert)
-    // Coherence judgement: Eingabe kohärent/inkohärent (2000) (wie bei
-    // intuition)
-      // Zu langsam, falls keine Eingabe (wie oben)
-    / Solution word: Eingabe des Oberbegriffs (wie oben)
-*/
-
 /*
     Fluency block
 */
