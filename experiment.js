@@ -71,6 +71,27 @@ let tooSlowNode = {
     },
 };
 
+// Solution word
+let solutionWord = {
+    type: 'survey-text',
+    questions: [{prompt: 'Bitte geben Sie ein X oder ein L&oumlsungswort ein'}],
+    trial_duration: 8000,
+};
+
+// Only show solution word if not too slow
+let solutionWordNode = {
+    timeline: [solutionWord],
+    conditional_function: function() {
+        let data = jsPsych.data.get().last(1).values()[0];
+        if (data.key_press ==
+            jsPsych.pluginAPI.convertKeyCharacterToKeyCode('NULL')) {
+            return false;
+        } else {
+            return true;
+        }
+    },
+};
+
 
 /*
     Instruction block
@@ -243,32 +264,10 @@ let intuitionTriad = {
     trial_duration: 1500,
 };
 
-// Intuition solution word
-let intuitionSolutionWord = {
-    type: 'survey-text',
-    questions: [{prompt: 'Bitte geben Sie ein X oder ein L&oumlsungswort ein'}],
-    trial_duration: 8000,
-};
-
-// Only show intuition solution word if not too slow
-let intuitionSolutionWordNode = {
-    timeline: [intuitionSolutionWord],
-    conditional_function: function() {
-        let data = jsPsych.data.get().last(1).values()[0];
-        if (data.key_press ==
-            jsPsych.pluginAPI.convertKeyCharacterToKeyCode('NULL')) {
-            return false;
-        } else {
-            return true;
-        }
-    },
-};
-
 // Intuition procedure
 let intuitionProcedure = {
-    timeline: [fixationCross, intuitionTriad,
-        coherenceJudgement, tooSlowNode,
-        intuitionSolutionWordNode],
+    timeline: [fixationCross, intuitionTriad, coherenceJudgement, tooSlowNode,
+        solutionWordNode],
     timeline_variables: intuitionStimuli,
     randomize_order: true,
 };
@@ -352,7 +351,7 @@ let fluencyTriad = {
 // Fluency procedure
 let fluencyProcedure = {
     timeline: [fixationCross, fluencyTriad, coherenceJudgement,
-        tooSlowNode, fluencySolutionWordNode],
+        tooSlowNode, solutionWordNode],
     timeline_variables: fluencyStimuli,
     randomize_order: true,
 };
