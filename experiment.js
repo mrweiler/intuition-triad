@@ -35,7 +35,6 @@ let coherencePosition =
     jsPsych.randomization.sampleWithReplacement(coherencePositions, 1);
 
 // Coherence judgement
-// TO DO: zusammenhängend / zusammengewürfelt unten links bzw. unten rechts.
 let coherenceJudgement = {
     type: 'html-keyboard-response',
     stimulus: function() {
