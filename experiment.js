@@ -360,6 +360,10 @@ let affectiveBlockInstructions = {
 
 // TO DO: Stimulus (1500) ink_08_neg.bmp, koh_12_pos.bmp, 01-24
 
+// Affective stimuli
+let affectiveStimuli = [
+];
+
 // Affective triad
 let affectiveTriad = {
     // type: 'image-keyboard-response',
