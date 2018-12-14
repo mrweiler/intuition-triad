@@ -339,6 +339,10 @@ let fluencyBlock = {
 };
 
 
+/*
+    Affective block
+*/
+
 // Block affektive Stimuli
   // 48 Trials
     // Fixationskreuz (500)
@@ -349,10 +353,15 @@ let fluencyBlock = {
 
 // Rating: Wie sehr haben Sie Ihrer Intuition vertraut?
 
-
 // Manipulationscheck
 // Ḱonnten Sie alle Triaden entziffern?
     // Wenn nein: Wie viele Triaden konnten Sie nicht entziffern?
+
+// Affective block
+let affectiveBlock = {
+    timeline: [affectiveBlockInstructions, affectiveProcedure,
+        confidenceRating],
+};
 
 
 // Debriefing
@@ -360,7 +369,8 @@ let fluencyBlock = {
 
 // Main
 jsPsych.init({
-    timeline: [instructions, practiceBlock, intuitionBlock, fluencyBlock],
+    timeline: [instructions, practiceBlock, intuitionBlock, fluencyBlock,
+        affectiveBlock],
     // timeline: [intuitionBlock],
     on_finish: function() {
         jsPsych.data.displayData();
