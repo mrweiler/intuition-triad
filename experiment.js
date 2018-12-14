@@ -165,7 +165,10 @@ let practiceBlock = {
 };
 
 
-// Intuition and fluency stimuli pool
+/*
+    Intuition and fluency stimuli pool
+*/
+
 // 36 coherence stimuli
 let coherenceStimuliPool = [
     'koh_01', 'koh_02', 'koh_03', 'koh_04', 'koh_05',
