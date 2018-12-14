@@ -436,30 +436,27 @@ let manipulationCheck2Node = {
     },
 };
 
+// Affective block debriefing
+let affectiveBlockDebriefing = {
+    type: 'instructions',
+    pages: [
+        'Danke! Wenden Sie sich bitte an die Versuchsleiterin.',
+    ],
+    show_clickable_nav: true,
+};
+
 // Affective block
 let affectiveBlock = {
     timeline: [affectiveBlockInstructions, affectiveProcedure,
-        confidenceRating, manipulationCheck1, manipulationCheck2Node],
-};
-
-
-/*
-    Debriefing
-*/
-
-// Debriefing
-let debriefing = {
-    // type: 'image-keyboard-response',
-    type: 'html-keyboard-response',
-    stimulus: 'Danke! Wenden Sie sich bitte an die Versuchsleiterin.',
-    choices: jsPsych.NO_KEYS,
+        confidenceRating, manipulationCheck1, manipulationCheck2Node,
+        affectiveBlockDebriefing],
 };
 
 
 // Main
 jsPsych.init({
     timeline: [instructions, practiceBlock, intuitionBlock, fluencyBlock,
-        affectiveBlock, debriefing],
+        affectiveBlock],
     on_finish: function() {
         jsPsych.data.displayData();
     },
