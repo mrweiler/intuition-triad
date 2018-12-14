@@ -317,6 +317,10 @@ lowFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
 
 // TODO: Add either 'r', 'g', or 'b' to all fluency stimuli
 
+// Fluency stimuli
+let fluencyStimuli = [
+];
+
 // Fluency triad
 let fluencyTriad = {
     // type: 'image-keyboard-response',
