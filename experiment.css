@@ -1,3 +1,16 @@
+.bottomleft {
+	font-size:60px;
+	position: absolute;
+	bottom: 10%;
+	left: 10%;
+}
+
+.bottomright {
+	font-size:60px;
+	position: absolute;
+	bottom: 10%;
+	right: 10%;
+}
 .fixation {
 	font-size:60px;
 }

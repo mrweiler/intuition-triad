@@ -40,9 +40,11 @@ let coherenceJudgement = {
     type: 'html-keyboard-response',
     stimulus: function() {
         if (coherencePosition == 'left') {
-            return 'Press "s" for coherent or "l" for incoherent';
+            return '<div class="bottomleft">zusammenh&aumlngend</div>'
+                +'<div class="bottomright">zusammengew&uumlrfelt</div>';
         } else {
-            return 'Press "s" for incoherent or "l" for coherent';
+            return '<div class="bottomleft">zusammengew&uumlrfelt</div>'
+                +'<div class="bottomright">zusammenh&aumlngend</div>';
         }
     },
     choices: ['s', 'l'],
@@ -429,7 +431,6 @@ let debriefing = {
 jsPsych.init({
     timeline: [instructions, practiceBlock, intuitionBlock, fluencyBlock,
         affectiveBlock, debriefing],
-    // timeline: [intuitionBlock],
     on_finish: function() {
         jsPsych.data.displayData();
     },
