@@ -100,6 +100,19 @@ let solutionWordNode = {
     Show instructions on several pages.
 */
 
+// Enter subject id
+let subjectId;
+let enterSubjectId = {
+    type: 'survey-text',
+    questions: [{prompt: 'Bitte geben Sie Ihren Versuchspersonen-Code ein.'}],
+    on_finish: function(data) {
+        subjectId = JSON.parse(data.responses).Q0;
+        jsPsych.data.addDataToLastTrial({
+            subjectId: subjectId,
+        });
+    },
+};
+
 // General instructions
 let instructions = {
     type: 'instructions',
@@ -462,8 +475,8 @@ let affectiveBlock = {
 
 // Main
 jsPsych.init({
-    timeline: [instructions, practiceBlock, intuitionBlock, fluencyBlock,
-        affectiveBlock],
+    timeline: [enterSubjectId, instructions, practiceBlock, intuitionBlock,
+        fluencyBlock, affectiveBlock],
     on_finish: function() {
         jsPsych.data.displayData();
     },
