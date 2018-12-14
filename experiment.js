@@ -17,6 +17,18 @@ let fixationCross = {
     trial_duration: 500,
 };
 
+// Confidence rating
+let scaleConfidenceRating = ['0: Gar nicht', '1', '2', '3', '4', '5',
+    '6: Sehr stark'];
+let confidenceRating = {
+    type: 'survey-likert',
+    questions: [{
+        prompt: 'Die Aufgabe ist geschafft! Wenn Sie auf die Aufgabe '
+            + 'zur&uumlckblicken, wie sehr haben Sie Ihrer Intuition vertraut?',
+        labels: scaleConfidenceRating,
+    }],
+};
+
 
 /*
     Instruction block
@@ -280,18 +292,6 @@ let intuitionProcedure = {
         intuitionSolutionWordNode],
     timeline_variables: intuitionStimuli,
     randomize_order: true,
-};
-
-// Confidence rating
-let scaleConfidenceRating = ['0: Gar nicht', '1', '2', '3', '4', '5',
-    '6: Sehr stark'];
-let confidenceRating = {
-    type: 'survey-likert',
-    questions: [{
-        prompt: 'Die Aufgabe ist geschafft! Wenn Sie auf die Aufgabe '
-            + 'zur&uumlckblicken, wie sehr haben Sie Ihrer Intuition vertraut?',
-        labels: scaleConfidenceRating,
-    }],
 };
 
 // Intuition block
