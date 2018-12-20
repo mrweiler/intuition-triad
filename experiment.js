@@ -494,7 +494,17 @@ let affectiveBlock = {
 jsPsych.init({
     timeline: [enterSubjectId, instructions, practiceBlock, intuitionBlock,
         fluencyBlock, affectiveBlock],
-   on_finish: function() {
-        jsPsych.data.displayData();
+    on_finish: function() {
+        let d = new Date();
+        jsPsych.data.get().localSave('csv',
+            subjectId + '_'
+            + d.getFullYear() + '-'
+            + ('0' + d.getMonth()).slice(-2) + '-'
+            + ('0' + d.getDate()).slice(-2) + '_'
+            + ('0' + d.getHours()).slice(-2) + '-'
+            + ('0' + d.getMinutes()).slice(-2) + '-'
+            + ('0' + d.getSeconds()).slice(-2) + '_'
+            + '.csv'
+        );
     },
 });
