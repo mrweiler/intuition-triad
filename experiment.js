@@ -39,7 +39,7 @@ let coherencePosition =
 let coherenceJudgement = {
     type: 'html-keyboard-response',
     stimulus: function() {
-        if (coherencePosition == 'left') {
+        if (coherencePosition[0] === 'left') {
             return '<div class="coherenceleft">zusammenh&aumlngend</div>'
                 +'<div class="coherenceright">zusammengew&uumlrfelt</div>';
         } else {
@@ -49,6 +49,7 @@ let coherenceJudgement = {
     },
     choices: ['s', 'l'],
     trial_duration: 2000,
+    data: {coherence_position: coherencePosition[0]},
 };
 
 // Warning that reaction is too slow
@@ -493,7 +494,7 @@ let affectiveBlock = {
 jsPsych.init({
     timeline: [enterSubjectId, instructions, practiceBlock, intuitionBlock,
         fluencyBlock, affectiveBlock],
-    on_finish: function() {
+   on_finish: function() {
         jsPsych.data.displayData();
     },
 });
