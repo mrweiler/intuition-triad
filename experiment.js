@@ -135,10 +135,26 @@ let instructions = {
 let practiceBlockInstructions = {
     type: 'instructions',
     pages: [
-        'First page with practice block instructions',
-        'Second page with practice block instructions',
+        '<p class = "instructions">Nun kommt eine Aufgabe, in der Sie schnell '
+        + 'reagieren sollen. </p>'
+        + '<p class = "instructions">Zuerst kommt ein Training, in dem Sie '
+        + 'lernen, in einer vorgegebenen Zeit schnell zu reagieren. Sie sehen '
+        + 'im Folgenden immer ein Kreuz in der Mitte des Bildschirms f&uumlr '
+        + 'eine kurze Zeit erscheinen. Danach taucht ein Ausrufezeichen rechts '
+        + 'oder links von dem Kreuz auf.</p>'
+        + '<p class = "instructions">Dr&uumlcken Sie bitte, wenn das '
+        + 'Ausrufezeichen rechts erscheint, so schnell wie m&oumlglich auf die '
+        + 'rechte Reaktionstaste von der Tastatur. Wenn das Ausrufezeichen '
+        + 'links erscheint, dann dr&uumlcken Sie bitte auf die linke '
+        + 'Reaktionstaste auf der Tastatur. </p>'
+        + '<p class = "instructions">Sie haben jeweils nur 2 Sekunden Zeit '
+        + 'f&uumlr diese Reaktion. Dies ist nur ein Trainingsdurchlauf. Sie '
+        + 'k&oumlnnen ruhig Fehler machen und sich langsam an die schnelle '
+        + 'Reaktionszeit gew&oumlhnen. </p>'
+        + '<p class = "instructions">Mit der Leertaste geht es weiter... </p>',
     ],
-    show_clickable_nav: true,
+    key_forward: 'space',
+    show_clickable_nav: false,
 };
 
 // Practice stimuli

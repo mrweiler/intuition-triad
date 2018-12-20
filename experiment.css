@@ -13,6 +13,12 @@
 	font-size:60px;
 }
 
+.instructions {
+	padding-left: 5%;
+	padding-right: 5%;
+	text-align: left;
+}
+
 .practiceleft {
 	font-size:60px;
 	position: absolute;
