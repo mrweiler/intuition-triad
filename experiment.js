@@ -35,7 +35,6 @@ let coherencePosition =
     jsPsych.randomization.sampleWithReplacement(coherencePositions, 1);
 
 // Coherence judgement
-// TO DO: stimuli doch mittig statt unten
 let coherenceJudgement = {
     type: 'html-keyboard-response',
     stimulus: function() {
