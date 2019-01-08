@@ -498,7 +498,7 @@ jsPsych.init({
         jsPsych.data.get().localSave('csv',
             subjectId + '_'
             + d.getFullYear() + '-'
-            + ('0' + d.getMonth()).slice(-2) + '-'
+            + ('0' + d.getMonth() + 1).slice(-2) + 1 + '-'
             + ('0' + d.getDate()).slice(-2) + '_'
             + ('0' + d.getHours()).slice(-2) + '-'
             + ('0' + d.getMinutes()).slice(-2) + '-'
