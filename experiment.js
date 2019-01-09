@@ -177,6 +177,7 @@ let practiceTrial = {
     stimulus: jsPsych.timelineVariable('practiceStimulus'),
     choices: ['s', 'l'],
     trial_duration: 2000,
+    data: {trial: 'practice trial'},
 };
 
 // Practice procedure
