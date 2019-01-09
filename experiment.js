@@ -15,6 +15,7 @@ let fixationCross = {
     stimulus: '<div class="fixation">+</div>',
     choices: jsPsych.NO_KEYS,
     trial_duration: 500,
+    data: {trial: 'fixation cross'},
 };
 
 // Confidence rating
