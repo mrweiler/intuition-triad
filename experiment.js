@@ -162,6 +162,7 @@ let practiceBlockInstructions = {
     ],
     key_forward: 'space',
     show_clickable_nav: false,
+    data: {trial: 'practice block instructions'},
 };
 
 // Practice stimuli
