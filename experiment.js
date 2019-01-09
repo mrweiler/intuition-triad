@@ -127,6 +127,7 @@ let instructions = {
         'Second page with general instructions',
     ],
     show_clickable_nav: true,
+    data: {trial: 'general instructions'},
 };
 
 
