@@ -195,6 +195,7 @@ let practiceBlockDebriefing = {
         'This is the practice block debriefing',
     ],
     show_clickable_nav: true,
+    data: {trial: 'practice block debriefing'},
 };
 
 // Practice block
