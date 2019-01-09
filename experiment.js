@@ -83,6 +83,7 @@ let solutionWord = {
     type: 'survey-text',
     questions: [{prompt: 'Bitte geben Sie ein X oder ein L&oumlsungswort ein'}],
     trial_duration: 8000,
+    data: {trial: 'solution word'},
 };
 
 // Only show solution word if not too slow
