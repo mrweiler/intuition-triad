@@ -49,7 +49,10 @@ let coherenceJudgement = {
     },
     choices: ['s', 'l'],
     trial_duration: 2000,
-    data: {coherence_position: coherencePosition[0]},
+    data: {
+        coherence_position: coherencePosition[0],
+        trial: 'coherence judgement',
+    },
 };
 
 // Warning that reaction is too slow
