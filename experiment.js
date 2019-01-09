@@ -61,6 +61,7 @@ let tooSlow = {
     stimulus: 'Please respond faster!',
     choices: jsPsych.NO_KEYS,
     trial_duration: 1000,
+    data: {trial: 'too slow'},
 };
 
 // Show warning in case that reaction was too slow
