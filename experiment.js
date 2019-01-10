@@ -210,29 +210,35 @@ let practiceBlock = {
 */
 
 // 36 coherence stimuli
-let coherenceStimuliPool = [
-    'koh_01', 'koh_02', 'koh_03', 'koh_04', 'koh_05',
-    'koh_06', 'koh_07', 'koh_08', 'koh_09', 'koh_10',
-    'koh_11', 'koh_12', 'koh_13', 'koh_14', 'koh_15',
-    'koh_16', 'koh_17', 'koh_18', 'koh_19', 'koh_20',
-    'koh_21', 'koh_22', 'koh_23', 'koh_24', 'koh_25',
-    'koh_26', 'koh_27', 'koh_28', 'koh_29', 'koh_30',
-    'koh_31', 'koh_32', 'koh_33', 'koh_34', 'koh_35',
-    'koh_36',
-];
+let coherenceStimuliPool = createStimuliPool(poolSize = 36);
+coherenceStimuliPool = addPrefix(prefix = 'koh_',
+    stimuli = coherenceStimuliPool);
 
 // 36 incoherence stimuli
-let incoherenceStimuliPool = [
-    'ink_01', 'ink_02', 'ink_03', 'ink_04', 'ink_05',
-    'ink_06', 'ink_07', 'ink_08', 'ink_09', 'ink_10',
-    'ink_11', 'ink_12', 'ink_13', 'ink_14', 'ink_15',
-    'ink_16', 'ink_17', 'ink_18', 'ink_19', 'ink_20',
-    'ink_21', 'ink_22', 'ink_23', 'ink_24', 'ink_25',
-    'ink_26', 'ink_27', 'ink_28', 'ink_29', 'ink_30',
-    'ink_31', 'ink_32', 'ink_33', 'ink_34', 'ink_35',
-    'ink_36',
-];
+let incoherenceStimuliPool = createStimuliPool(poolSize = 36);
+incoherenceStimuliPool = addPrefix(prefix = 'ink_',
+    stimuli = incoherenceStimuliPool);
 
+/**
+* Create stimuli pool
+* @param {num} poolSize number of stimuli to be created
+*
+* @return {array} array of stimuli
+*/
+function createStimuliPool(poolSize) {
+    let numArray = [];
+    let stimuliPool = [];
+    let stimulus;
+    for (let i = 1; i <= poolSize; i++) {
+        numArray.push(i);
+    }
+    numArray = jsPsych.randomization.shuffle(numArray);
+    for (num of numArray) {
+        stimulus = ('0' + num).slice(-2);
+        stimuliPool.push(stimulus);
+    }
+    return stimuliPool;
+}
 
 /*
     Intuition block
@@ -256,54 +262,60 @@ let intuitionStimuliPool = jsPsych.randomization.sampleWithoutReplacement(
 intuitionStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
     incoherenceStimuliPool, 18));
 
+// Add file ending to intuition stimuli
+intuitionStimuliPool = addPostfix(postfix = '.png',
+    stimuli = intuitionStimuliPool);
+
+// Add image directory
+intuitionStimuliPool = addPrefix(prefix = 'img/',
+    stimuli = intuitionStimuliPool);
+
 // Shuffle intuition stimuli
 intuitionStimuliPool = jsPsych.randomization.repeat(intuitionStimuliPool, 1);
 
 // Intuition stimuli
-// TO DO: add folder 'img/'
 let intuitionStimuli = [
-    {intuitionStimulus: intuitionStimuliPool[0] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[1] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[2] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[3] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[4] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[5] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[6] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[7] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[8] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[9] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[10] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[11] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[12] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[13] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[14] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[15] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[16] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[17] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[18] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[19] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[20] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[21] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[22] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[23] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[24] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[25] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[26] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[27] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[28] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[29] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[30] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[31] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[32] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[33] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[34] + '.png'},
-    {intuitionStimulus: intuitionStimuliPool[35] + '.png'},
+    {intuitionStimulus: intuitionStimuliPool[0]},
+    {intuitionStimulus: intuitionStimuliPool[1]},
+    {intuitionStimulus: intuitionStimuliPool[2]},
+    {intuitionStimulus: intuitionStimuliPool[3]},
+    {intuitionStimulus: intuitionStimuliPool[4]},
+    {intuitionStimulus: intuitionStimuliPool[5]},
+    {intuitionStimulus: intuitionStimuliPool[6]},
+    {intuitionStimulus: intuitionStimuliPool[7]},
+    {intuitionStimulus: intuitionStimuliPool[8]},
+    {intuitionStimulus: intuitionStimuliPool[9]},
+    {intuitionStimulus: intuitionStimuliPool[10]},
+    {intuitionStimulus: intuitionStimuliPool[11]},
+    {intuitionStimulus: intuitionStimuliPool[12]},
+    {intuitionStimulus: intuitionStimuliPool[13]},
+    {intuitionStimulus: intuitionStimuliPool[14]},
+    {intuitionStimulus: intuitionStimuliPool[15]},
+    {intuitionStimulus: intuitionStimuliPool[16]},
+    {intuitionStimulus: intuitionStimuliPool[17]},
+    {intuitionStimulus: intuitionStimuliPool[18]},
+    {intuitionStimulus: intuitionStimuliPool[19]},
+    {intuitionStimulus: intuitionStimuliPool[20]},
+    {intuitionStimulus: intuitionStimuliPool[21]},
+    {intuitionStimulus: intuitionStimuliPool[22]},
+    {intuitionStimulus: intuitionStimuliPool[23]},
+    {intuitionStimulus: intuitionStimuliPool[24]},
+    {intuitionStimulus: intuitionStimuliPool[25]},
+    {intuitionStimulus: intuitionStimuliPool[26]},
+    {intuitionStimulus: intuitionStimuliPool[27]},
+    {intuitionStimulus: intuitionStimuliPool[28]},
+    {intuitionStimulus: intuitionStimuliPool[29]},
+    {intuitionStimulus: intuitionStimuliPool[30]},
+    {intuitionStimulus: intuitionStimuliPool[31]},
+    {intuitionStimulus: intuitionStimuliPool[32]},
+    {intuitionStimulus: intuitionStimuliPool[33]},
+    {intuitionStimulus: intuitionStimuliPool[34]},
+    {intuitionStimulus: intuitionStimuliPool[35]},
 ];
 
 // Intuition triad
 let intuitionTriad = {
-    // type: 'image-keyboard-response',
-    type: 'html-keyboard-response',
+    type: 'image-keyboard-response',
     stimulus: jsPsych.timelineVariable('intuitionStimulus'),
     choices: jsPsych.NO_KEYS,
     trial_duration: 1500,
@@ -372,12 +384,12 @@ lowFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
 
 // Fluency stimuli
 let fluencyStimuli = [
-    {fluencyStimulus: 'ink_01_low_r' + '.png'},
-    {fluencyStimulus: 'ink_02_high_g' + '.png'},
-    {fluencyStimulus: 'ink_03_low_b' + '.png'},
-    {fluencyStimulus: 'koh_04_high_r' + '.png'},
-    {fluencyStimulus: 'koh_05_low_g' + '.png'},
-    {fluencyStimulus: 'koh_06_high_b' + '.png'},
+    {fluencyStimulus: 'ink_01_low_r'},
+    {fluencyStimulus: 'ink_02_high_g'},
+    {fluencyStimulus: 'ink_03_low_b'},
+    {fluencyStimulus: 'koh_04_high_r'},
+    {fluencyStimulus: 'koh_05_low_g'},
+    {fluencyStimulus: 'koh_06_high_b'},
 ];
 
 // Fluency triad
@@ -459,10 +471,10 @@ let affectiveBlockInstructions = {
 
 // Affective stimuli
 let affectiveStimuli = [
-    {affectiveStimulus: 'ink_01_neg' + '.png'},
-    {affectiveStimulus: 'ink_02_pos' + '.png'},
-    {affectiveStimulus: 'koh_03_neg' + '.png'},
-    {affectiveStimulus: 'koh_04_pos' + '.png'},
+    {affectiveStimulus: 'ink_01_neg'},
+    {affectiveStimulus: 'ink_02_pos'},
+    {affectiveStimulus: 'koh_03_neg'},
+    {affectiveStimulus: 'koh_04_pos'},
 ];
 
 // Affective triad
@@ -517,3 +529,42 @@ jsPsych.init({
         );
     },
 });
+
+
+/*
+    Functions
+*/
+
+/**
+* Add prefix to stimuli
+* @param {sting} prefix prefix to be added to the stimuli
+* @param {array} stimuli stimuli pool input
+*
+* @return {array} array of stimuli
+*/
+function addPrefix(prefix, stimuli) {
+    let stimuliPool = [];
+    let stimulus;
+    for (stim of stimuli) {
+        stimulus = prefix + stim;
+        stimuliPool.push(stimulus);
+    }
+    return stimuliPool;
+}
+
+/**
+* Add postfix to stimuli
+* @param {sting} postfix postfix to be added to the stimuli
+* @param {array} stimuli stimuli pool input
+*
+* @return {array} array of stimuli
+*/
+function addPostfix(postfix, stimuli) {
+    let stimuliPool = [];
+    let stimulus;
+    for (stim of stimuli) {
+        stimulus = stim + postfix;
+        stimuliPool.push(stimulus);
+    }
+    return stimuliPool;
+}
