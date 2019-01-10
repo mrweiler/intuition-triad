@@ -530,8 +530,6 @@ affectiveStimuliPool.splice(affectiveStimuliPool.indexOf('koh_09_neg'), 1,
 affectiveStimuliPool.splice(affectiveStimuliPool.indexOf('koh_10_neg'), 1,
     'koh_14_neg');
 
-console.log(affectiveStimuliPool);
-
 // Add file ending to affective stimuli
 affectiveStimuliPool = addPostfix(postfix = '.png',
     stimuli = affectiveStimuliPool);
