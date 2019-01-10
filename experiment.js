@@ -496,19 +496,112 @@ let affectiveBlockInstructions = {
 };
 
 // TO DO: Stimulus (1500) ink_08_neg.png, koh_12_pos.png, 01-24
+// 24 coherence stimuli
+coherenceStimuliPool = createStimuliPool(poolSize = 24);
+coherenceStimuliPool = addPrefix(prefix = 'koh_',
+    stimuli = coherenceStimuliPool);
+
+// 24 incoherence stimuli
+incoherenceStimuliPool = createStimuliPool(poolSize = 24);
+incoherenceStimuliPool = addPrefix(prefix = 'ink_',
+    stimuli = incoherenceStimuliPool);
+
+// Take 12 coherence stimuli to the negative stimuli pool
+let negativeStimuliPool =
+    jsPsych.randomization.sampleWithoutReplacement(coherenceStimuliPool, 12);
+
+// Add 12 incoherence stimuli to the negative stimuli pool
+negativeStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
+        incoherenceStimuliPool, 12));
+
+// Add 'neg' to the negative stimuli pool
+negativeStimuliPool = addPostfix(postfix = '_neg',
+    stimuli = negativeStimuliPool);
+
+// Take 12 coherence stimuli to the positive stimuli pool
+let positiveStimuliPool =
+    jsPsych.randomization.sampleWithoutReplacement(coherenceStimuliPool, 12);
+
+// Add 12 incoherence stimuli to the positive stimuli pool
+positiveStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
+        incoherenceStimuliPool, 12));
+
+// Add 'pos' to the positive stimuli pool
+positiveStimuliPool = addPostfix(postfix = '_pos',
+    stimuli = positiveStimuliPool);
+
+// Add negative and positive stimuli to the affective stimuli pool
+let affectiveStimuliPool = [];
+affectiveStimuliPool.push(...negativeStimuliPool);
+affectiveStimuliPool.push(...positiveStimuliPool);
+
+// Add file ending to affective stimuli
+affectiveStimuliPool = addPostfix(postfix = '.png',
+    stimuli = affectiveStimuliPool);
+
+// Add image directory
+affectiveStimuliPool = addPrefix(prefix = 'img/',
+    stimuli = affectiveStimuliPool);
+
+// Shuffle intuition stimuli
+affectiveStimuliPool = jsPsych.randomization.repeat(affectiveStimuliPool, 1);
+console.log(affectiveStimuliPool);
 
 // Affective stimuli
 let affectiveStimuli = [
-    {affectiveStimulus: 'ink_01_neg'},
-    {affectiveStimulus: 'ink_02_pos'},
-    {affectiveStimulus: 'koh_03_neg'},
-    {affectiveStimulus: 'koh_04_pos'},
+    {affectiveStimulus: affectiveStimuliPool[0]},
+    {affectiveStimulus: affectiveStimuliPool[1]},
+    {affectiveStimulus: affectiveStimuliPool[2]},
+    {affectiveStimulus: affectiveStimuliPool[3]},
+    {affectiveStimulus: affectiveStimuliPool[4]},
+    {affectiveStimulus: affectiveStimuliPool[5]},
+    {affectiveStimulus: affectiveStimuliPool[6]},
+    {affectiveStimulus: affectiveStimuliPool[7]},
+    {affectiveStimulus: affectiveStimuliPool[8]},
+    {affectiveStimulus: affectiveStimuliPool[9]},
+    {affectiveStimulus: affectiveStimuliPool[10]},
+    {affectiveStimulus: affectiveStimuliPool[11]},
+    {affectiveStimulus: affectiveStimuliPool[12]},
+    {affectiveStimulus: affectiveStimuliPool[13]},
+    {affectiveStimulus: affectiveStimuliPool[14]},
+    {affectiveStimulus: affectiveStimuliPool[15]},
+    {affectiveStimulus: affectiveStimuliPool[16]},
+    {affectiveStimulus: affectiveStimuliPool[17]},
+    {affectiveStimulus: affectiveStimuliPool[18]},
+    {affectiveStimulus: affectiveStimuliPool[19]},
+    {affectiveStimulus: affectiveStimuliPool[20]},
+    {affectiveStimulus: affectiveStimuliPool[21]},
+    {affectiveStimulus: affectiveStimuliPool[22]},
+    {affectiveStimulus: affectiveStimuliPool[23]},
+    {affectiveStimulus: affectiveStimuliPool[24]},
+    {affectiveStimulus: affectiveStimuliPool[25]},
+    {affectiveStimulus: affectiveStimuliPool[26]},
+    {affectiveStimulus: affectiveStimuliPool[27]},
+    {affectiveStimulus: affectiveStimuliPool[28]},
+    {affectiveStimulus: affectiveStimuliPool[29]},
+    {affectiveStimulus: affectiveStimuliPool[30]},
+    {affectiveStimulus: affectiveStimuliPool[31]},
+    {affectiveStimulus: affectiveStimuliPool[32]},
+    {affectiveStimulus: affectiveStimuliPool[33]},
+    {affectiveStimulus: affectiveStimuliPool[34]},
+    {affectiveStimulus: affectiveStimuliPool[35]},
+    {affectiveStimulus: affectiveStimuliPool[36]},
+    {affectiveStimulus: affectiveStimuliPool[37]},
+    {affectiveStimulus: affectiveStimuliPool[38]},
+    {affectiveStimulus: affectiveStimuliPool[39]},
+    {affectiveStimulus: affectiveStimuliPool[40]},
+    {affectiveStimulus: affectiveStimuliPool[41]},
+    {affectiveStimulus: affectiveStimuliPool[42]},
+    {affectiveStimulus: affectiveStimuliPool[43]},
+    {affectiveStimulus: affectiveStimuliPool[44]},
+    {affectiveStimulus: affectiveStimuliPool[45]},
+    {affectiveStimulus: affectiveStimuliPool[46]},
+    {affectiveStimulus: affectiveStimuliPool[47]},
 ];
 
 // Affective triad
 let affectiveTriad = {
-    // type: 'image-keyboard-response',
-    type: 'html-keyboard-response',
+    type: 'image-keyboard-response',
     stimulus: jsPsych.timelineVariable('affectiveStimulus'),
     choices: jsPsych.NO_KEYS,
     trial_duration: 1500,
