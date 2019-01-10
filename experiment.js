@@ -495,36 +495,29 @@ let affectiveBlockInstructions = {
     show_clickable_nav: true,
 };
 
-// TO DO: Stimulus (1500) ink_08_neg.png, koh_12_pos.png, 01-24
-// 24 coherence stimuli
-coherenceStimuliPool = createStimuliPool(poolSize = 24);
+// 12 coherence stimuli
+coherenceStimuliPool = createStimuliPool(poolSize = 12);
 coherenceStimuliPool = addPrefix(prefix = 'koh_',
     stimuli = coherenceStimuliPool);
 
-// 24 incoherence stimuli
-incoherenceStimuliPool = createStimuliPool(poolSize = 24);
+// 12 incoherence stimuli
+incoherenceStimuliPool = createStimuliPool(poolSize = 12);
 incoherenceStimuliPool = addPrefix(prefix = 'ink_',
     stimuli = incoherenceStimuliPool);
 
-// Take 12 coherence stimuli to the negative stimuli pool
-let negativeStimuliPool =
-    jsPsych.randomization.sampleWithoutReplacement(coherenceStimuliPool, 12);
-
-// Add 12 incoherence stimuli to the negative stimuli pool
-negativeStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
-        incoherenceStimuliPool, 12));
+// Add 12 coherence and 12 incoherence stimuli to the negative stimuli pool
+let negativeStimuliPool = [];
+negativeStimuliPool.push(...coherenceStimuliPool);
+negativeStimuliPool.push(...incoherenceStimuliPool);
 
 // Add 'neg' to the negative stimuli pool
 negativeStimuliPool = addPostfix(postfix = '_neg',
     stimuli = negativeStimuliPool);
 
-// Take 12 coherence stimuli to the positive stimuli pool
-let positiveStimuliPool =
-    jsPsych.randomization.sampleWithoutReplacement(coherenceStimuliPool, 12);
-
-// Add 12 incoherence stimuli to the positive stimuli pool
-positiveStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
-        incoherenceStimuliPool, 12));
+// Add 12 coherence and 12 incoherence stimuli to the positive stimuli pool
+let positiveStimuliPool = [];
+positiveStimuliPool.push(...coherenceStimuliPool);
+positiveStimuliPool.push(...incoherenceStimuliPool);
 
 // Add 'pos' to the positive stimuli pool
 positiveStimuliPool = addPostfix(postfix = '_pos',
@@ -535,6 +528,16 @@ let affectiveStimuliPool = [];
 affectiveStimuliPool.push(...negativeStimuliPool);
 affectiveStimuliPool.push(...positiveStimuliPool);
 
+// Replace individual stimuli
+affectiveStimuliPool.splice(affectiveStimuliPool.indexOf('ink_12_neg'), 1,
+    'ink_13_neg');
+affectiveStimuliPool.splice(affectiveStimuliPool.indexOf('koh_09_neg'), 1,
+    'koh_13_neg');
+affectiveStimuliPool.splice(affectiveStimuliPool.indexOf('koh_10_neg'), 1,
+    'koh_14_neg');
+
+console.log(affectiveStimuliPool);
+
 // Add file ending to affective stimuli
 affectiveStimuliPool = addPostfix(postfix = '.png',
     stimuli = affectiveStimuliPool);
@@ -542,10 +545,6 @@ affectiveStimuliPool = addPostfix(postfix = '.png',
 // Add image directory
 affectiveStimuliPool = addPrefix(prefix = 'img/',
     stimuli = affectiveStimuliPool);
-
-// Shuffle intuition stimuli
-affectiveStimuliPool = jsPsych.randomization.repeat(affectiveStimuliPool, 1);
-console.log(affectiveStimuliPool);
 
 // Affective stimuli
 let affectiveStimuli = [
