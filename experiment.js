@@ -219,27 +219,6 @@ let incoherenceStimuliPool = createStimuliPool(poolSize = 36);
 incoherenceStimuliPool = addPrefix(prefix = 'ink_',
     stimuli = incoherenceStimuliPool);
 
-/**
-* Create stimuli pool
-* @param {num} poolSize number of stimuli to be created
-*
-* @return {array} array of stimuli
-*/
-function createStimuliPool(poolSize) {
-    let numArray = [];
-    let stimuliPool = [];
-    let stimulus;
-    for (let i = 1; i <= poolSize; i++) {
-        numArray.push(i);
-    }
-    numArray = jsPsych.randomization.shuffle(numArray);
-    for (num of numArray) {
-        stimulus = ('0' + num).slice(-2);
-        stimuliPool.push(stimulus);
-    }
-    return stimuliPool;
-}
-
 /*
     Intuition block
 */
@@ -367,8 +346,9 @@ let highFluencyStimuliPool =
 highFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
         incoherenceStimuliPool, 9));
 
-// TODO: Add 'high' to high fluency stimuli pool
-
+// Add 'high' to high fluency stimuli pool
+highFluencyStimuliPool = addPostfix(postfix = '_high',
+    stimuli = highFluencyStimuliPool);
 
 // Take 9 coherence stimuli to the low fluency stimuli pool
 let lowFluencyStimuliPool =
@@ -378,24 +358,72 @@ let lowFluencyStimuliPool =
 lowFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
         incoherenceStimuliPool, 9));
 
-// TODO: Add 'low' to high fluency stimuli pool
+// Add 'low' to high fluency stimuli pool
+lowFluencyStimuliPool = addPostfix(postfix = '_low',
+    stimuli = lowFluencyStimuliPool);
 
-// TODO: Add either 'r', 'g', or 'b' to all fluency stimuli
+// Add high and low fluency stimuli to fluency pool
+let fluencyStimuliPool = [];
+fluencyStimuliPool.push(...highFluencyStimuliPool);
+fluencyStimuliPool.push(...lowFluencyStimuliPool);
+
+// Add r, g, b
+fluencyStimuliPool = addRGB(fluencyStimuliPool);
+
+// Add file ending to fluency stimuli
+fluencyStimuliPool = addPostfix(postfix = '.png',
+    stimuli = fluencyStimuliPool);
+
+// Add image directory
+fluencyStimuliPool = addPrefix(prefix = 'img/',
+    stimuli = fluencyStimuliPool);
+
+// Shuffle intuition stimuli
+fluencyStimuliPool = jsPsych.randomization.repeat(fluencyStimuliPool, 1);
 
 // Fluency stimuli
 let fluencyStimuli = [
-    {fluencyStimulus: 'ink_01_low_r'},
-    {fluencyStimulus: 'ink_02_high_g'},
-    {fluencyStimulus: 'ink_03_low_b'},
-    {fluencyStimulus: 'koh_04_high_r'},
-    {fluencyStimulus: 'koh_05_low_g'},
-    {fluencyStimulus: 'koh_06_high_b'},
+    {fluencyStimulus: fluencyStimuliPool[0]},
+    {fluencyStimulus: fluencyStimuliPool[1]},
+    {fluencyStimulus: fluencyStimuliPool[2]},
+    {fluencyStimulus: fluencyStimuliPool[3]},
+    {fluencyStimulus: fluencyStimuliPool[4]},
+    {fluencyStimulus: fluencyStimuliPool[5]},
+    {fluencyStimulus: fluencyStimuliPool[6]},
+    {fluencyStimulus: fluencyStimuliPool[7]},
+    {fluencyStimulus: fluencyStimuliPool[8]},
+    {fluencyStimulus: fluencyStimuliPool[9]},
+    {fluencyStimulus: fluencyStimuliPool[10]},
+    {fluencyStimulus: fluencyStimuliPool[11]},
+    {fluencyStimulus: fluencyStimuliPool[12]},
+    {fluencyStimulus: fluencyStimuliPool[13]},
+    {fluencyStimulus: fluencyStimuliPool[14]},
+    {fluencyStimulus: fluencyStimuliPool[15]},
+    {fluencyStimulus: fluencyStimuliPool[16]},
+    {fluencyStimulus: fluencyStimuliPool[17]},
+    {fluencyStimulus: fluencyStimuliPool[18]},
+    {fluencyStimulus: fluencyStimuliPool[19]},
+    {fluencyStimulus: fluencyStimuliPool[20]},
+    {fluencyStimulus: fluencyStimuliPool[21]},
+    {fluencyStimulus: fluencyStimuliPool[22]},
+    {fluencyStimulus: fluencyStimuliPool[23]},
+    {fluencyStimulus: fluencyStimuliPool[24]},
+    {fluencyStimulus: fluencyStimuliPool[25]},
+    {fluencyStimulus: fluencyStimuliPool[26]},
+    {fluencyStimulus: fluencyStimuliPool[27]},
+    {fluencyStimulus: fluencyStimuliPool[28]},
+    {fluencyStimulus: fluencyStimuliPool[29]},
+    {fluencyStimulus: fluencyStimuliPool[30]},
+    {fluencyStimulus: fluencyStimuliPool[31]},
+    {fluencyStimulus: fluencyStimuliPool[32]},
+    {fluencyStimulus: fluencyStimuliPool[33]},
+    {fluencyStimulus: fluencyStimuliPool[34]},
+    {fluencyStimulus: fluencyStimuliPool[35]},
 ];
 
 // Fluency triad
 let fluencyTriad = {
-    // type: 'image-keyboard-response',
-    type: 'html-keyboard-response',
+    type: 'image-keyboard-response',
     stimulus: jsPsych.timelineVariable('fluencyStimulus'),
     choices: jsPsych.NO_KEYS,
     trial_duration: 1500,
@@ -536,6 +564,23 @@ jsPsych.init({
 */
 
 /**
+* Add postfix to stimuli
+* @param {sting} postfix postfix to be added to the stimuli
+* @param {array} stimuli stimuli pool input
+*
+* @return {array} array of stimuli
+*/
+function addPostfix(postfix, stimuli) {
+    let stimuliPool = [];
+    let stimulus;
+    for (stim of stimuli) {
+        stimulus = stim + postfix;
+        stimuliPool.push(stimulus);
+    }
+    return stimuliPool;
+}
+
+/**
 * Add prefix to stimuli
 * @param {sting} prefix prefix to be added to the stimuli
 * @param {array} stimuli stimuli pool input
@@ -553,17 +598,45 @@ function addPrefix(prefix, stimuli) {
 }
 
 /**
-* Add postfix to stimuli
-* @param {sting} postfix postfix to be added to the stimuli
-* @param {array} stimuli stimuli pool input
+ * Add either 'r', 'g', or 'b' to all fluency stimuli
+ * @param {array} stimuli array of stimuli
+ *
+ * @return {array} array of sound files
+ */
+function addRGB(stimuli) {
+    let stimuliPool = [];
+    let stimulus;
+    let counter = 1;
+    for (stim of stimuli) {
+        if (counter % 3 == 0) {
+            stimulus = stim + '_r';
+        } else if (counter % 3 == 1) {
+            stimulus = stim + '_g';
+        } else {
+            stimulus = stim + '_b';
+        }
+            stimuliPool.push(stimulus);
+        counter += 1;
+    }
+return stimuliPool;
+}
+
+/**
+* Create stimuli pool
+* @param {num} poolSize number of stimuli to be created
 *
 * @return {array} array of stimuli
 */
-function addPostfix(postfix, stimuli) {
+function createStimuliPool(poolSize) {
+    let numArray = [];
     let stimuliPool = [];
     let stimulus;
-    for (stim of stimuli) {
-        stimulus = stim + postfix;
+    for (let i = 1; i <= poolSize; i++) {
+        numArray.push(i);
+    }
+    numArray = jsPsych.randomization.shuffle(numArray);
+    for (num of numArray) {
+        stimulus = ('0' + num).slice(-2);
         stimuliPool.push(stimulus);
     }
     return stimuliPool;
