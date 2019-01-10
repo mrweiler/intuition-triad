@@ -249,9 +249,6 @@ intuitionStimuliPool = addPostfix(postfix = '.png',
 intuitionStimuliPool = addPrefix(prefix = 'img/',
     stimuli = intuitionStimuliPool);
 
-// Shuffle intuition stimuli
-intuitionStimuliPool = jsPsych.randomization.repeat(intuitionStimuliPool, 1);
-
 // Intuition stimuli
 let intuitionStimuli = [
     {intuitionStimulus: intuitionStimuliPool[0]},
@@ -377,9 +374,6 @@ fluencyStimuliPool = addPostfix(postfix = '.png',
 // Add image directory
 fluencyStimuliPool = addPrefix(prefix = 'img/',
     stimuli = fluencyStimuliPool);
-
-// Shuffle intuition stimuli
-fluencyStimuliPool = jsPsych.randomization.repeat(fluencyStimuliPool, 1);
 
 // Fluency stimuli
 let fluencyStimuli = [
@@ -726,7 +720,6 @@ function createStimuliPool(poolSize) {
     for (let i = 1; i <= poolSize; i++) {
         numArray.push(i);
     }
-    numArray = jsPsych.randomization.shuffle(numArray);
     for (num of numArray) {
         stimulus = ('0' + num).slice(-2);
         stimuliPool.push(stimulus);
