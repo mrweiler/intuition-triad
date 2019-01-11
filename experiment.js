@@ -18,7 +18,7 @@ let fixationCross = {
     type: 'html-keyboard-response',
     stimulus: '<div class="fixation">+</div>',
     choices: jsPsych.NO_KEYS,
-    trial_duration: 500,
+    trial_duration: 1000,
     data: {trial: 'fixation cross'},
 };
 
