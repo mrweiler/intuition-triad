@@ -28,6 +28,7 @@ let confidenceRating = {
             + 'zur&uumlckblicken, wie sehr haben Sie Ihrer Intuition vertraut?',
         labels: scaleConfidenceRating,
     }],
+    data: {trial: 'confidence rating'},
 };
 
 // Coherence position
