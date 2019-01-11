@@ -244,11 +244,13 @@ let practiceBlock = {
 let coherenceStimuliPool = createStimuliPool(poolSize = 36);
 coherenceStimuliPool = addPrefix(prefix = 'koh_',
     stimuli = coherenceStimuliPool);
+coherenceStimuliPool = jsPsych.randomization.shuffle(coherenceStimuliPool);
 
 // 36 incoherence stimuli
 let incoherenceStimuliPool = createStimuliPool(poolSize = 36);
 incoherenceStimuliPool = addPrefix(prefix = 'ink_',
     stimuli = incoherenceStimuliPool);
+incoherenceStimuliPool = jsPsych.randomization.shuffle(incoherenceStimuliPool);
 
 /*
     Intuition block
@@ -266,12 +268,10 @@ let intuitionBlockInstructions = {
 };
 
 // Add 18 coherence stimuli to intuition stimuli pool
-let intuitionStimuliPool = jsPsych.randomization.sampleWithoutReplacement(
-    coherenceStimuliPool, 18);
+let intuitionStimuliPool = coherenceStimuliPool.splice(0, 18);
 
 // Add 18 incoherence stimuli to intuition stimuli pool
-intuitionStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
-    incoherenceStimuliPool, 18));
+intuitionStimuliPool.push(...incoherenceStimuliPool.splice(0, 18));
 
 // Add file ending to intuition stimuli
 intuitionStimuliPool = addPostfix(postfix = '.png',
@@ -371,24 +371,20 @@ let fluencyBlockInstructions = {
 };
 
 // Take 9 coherence stimuli to the high fluency stimuli pool
-let highFluencyStimuliPool =
-    jsPsych.randomization.sampleWithoutReplacement(coherenceStimuliPool, 9);
+let highFluencyStimuliPool = coherenceStimuliPool.splice(0, 9);
 
 // Add 9 incoherence stimuli to high fluency stimuli pool
-highFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
-        incoherenceStimuliPool, 9));
+highFluencyStimuliPool.push(...incoherenceStimuliPool.splice(0, 9));
 
 // Add 'high' to high fluency stimuli pool
 highFluencyStimuliPool = addPostfix(postfix = '_high',
     stimuli = highFluencyStimuliPool);
 
 // Take 9 coherence stimuli to the low fluency stimuli pool
-let lowFluencyStimuliPool =
-    jsPsych.randomization.sampleWithoutReplacement(coherenceStimuliPool, 9);
+let lowFluencyStimuliPool = coherenceStimuliPool.splice(0, 9);
 
 // Add 9 incoherence stimuli to low fluency stimuli pool
-lowFluencyStimuliPool.push(...jsPsych.randomization.sampleWithoutReplacement(
-        incoherenceStimuliPool, 9));
+lowFluencyStimuliPool.push(...incoherenceStimuliPool.splice(0, 9));
 
 // Add 'low' to high fluency stimuli pool
 lowFluencyStimuliPool = addPostfix(postfix = '_low',
