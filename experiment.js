@@ -231,6 +231,7 @@ let intuitionBlockInstructions = {
         'Second page with intuition block instructions',
     ],
     show_clickable_nav: true,
+    data: {trial: 'intuition block instructions'},
 };
 
 // Add 18 coherence stimuli to intuition stimuli pool
@@ -295,6 +296,7 @@ let intuitionTriad = {
     stimulus: jsPsych.timelineVariable('intuitionStimulus'),
     choices: jsPsych.NO_KEYS,
     trial_duration: 1500,
+    data: {trial: 'intuition triad'},
 };
 
 // Intuition procedure
@@ -312,6 +314,7 @@ let intuitionBlockDebriefing = {
         'This is the intuition block debriefing',
     ],
     show_clickable_nav: true,
+    data: {trial: 'intuition block debriefing'},
 };
 
 // Intuition block
@@ -333,6 +336,7 @@ let fluencyBlockInstructions = {
         'Second page with fluency block instructions',
     ],
     show_clickable_nav: true,
+    data: {trial: 'fluency block instructions'},
 };
 
 // Take 9 coherence stimuli to the high fluency stimuli pool
@@ -421,6 +425,7 @@ let fluencyTriad = {
     stimulus: jsPsych.timelineVariable('fluencyStimulus'),
     choices: jsPsych.NO_KEYS,
     trial_duration: 1500,
+    data: {trial: 'fluency triad'},
 };
 
 // Fluency procedure
@@ -438,6 +443,7 @@ let fluencyBlockDebriefing = {
         'This is the fluency block debriefing',
     ],
     show_clickable_nav: true,
+    data: {trial: 'fluency block debriefing'},
 };
 
 // Manipulation check 1
@@ -487,6 +493,7 @@ let affectiveBlockInstructions = {
         'Second page with affective block instructions',
     ],
     show_clickable_nav: true,
+    data: {trial: 'affective block instructions'},
 };
 
 // 12 coherence stimuli
@@ -596,6 +603,7 @@ let affectiveTriad = {
     stimulus: jsPsych.timelineVariable('affectiveStimulus'),
     choices: jsPsych.NO_KEYS,
     trial_duration: 1500,
+    data: {trial: 'affective triad'},
 };
 
 // Affective procedure
@@ -614,6 +622,7 @@ let affectiveBlockDebriefing = {
         'Danke! Wenden Sie sich bitte an die Versuchsleiterin.',
     ],
     show_clickable_nav: true,
+    data: {trial: 'affective block debriefing'},
 };
 
 // Affective block
