@@ -58,6 +58,22 @@ let coherenceJudgement = {
         coherence_position: coherencePosition[0],
         trial: 'coherence judgement',
     },
+    on_finish: function(data) {
+    let correctResponse;
+    if ((data.stimulus.includes('koh')) &&
+            (coherencePosition[0] === 'left')) {
+        correctResponse = keyLeft;
+    } else if ((data.stimulus.includes('ink')) &&
+            (coherencePosition[0] === 'right')) {
+        correctResponse = keyLeft;
+    } else {
+        correctResponse = keyRight;
+    }
+    data.correct_response =
+        jsPsych.pluginAPI.convertKeyCharacterToKeyCode(correctResponse);
+    data.correct = data.key_press == data.correct_response;
+},
+
 };
 
 // Warning that reaction is too slow
