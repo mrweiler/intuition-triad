@@ -9,6 +9,10 @@
     General components
 */
 
+// Keys
+let keyLeft = 's';
+let keyRight = 'l';
+
 // Fixation cross
 let fixationCross = {
     type: 'html-keyboard-response',
@@ -48,7 +52,7 @@ let coherenceJudgement = {
                 +'<div class="coherenceright">zusammenh&aumlngend</div>';
         }
     },
-    choices: ['s', 'l'],
+    choices: [keyLeft, keyRight],
     trial_duration: 2000,
     data: {
         coherence_position: coherencePosition[0],
@@ -114,7 +118,7 @@ let enterSubjectId = {
     questions: [{prompt: 'Bitte geben Sie Ihren Versuchspersonen-Code ein.'}],
     on_finish: function(data) {
         subjectId = JSON.parse(data.responses).Q0;
-        jsPsych.data.addDataToLastTrial({
+        jsPsych.data.addProperties({
             subjectId: subjectId,
         });
     },
@@ -176,9 +180,22 @@ let practiceStimuli = [
 let practiceTrial = {
     type: 'html-keyboard-response',
     stimulus: jsPsych.timelineVariable('practiceStimulus'),
-    choices: ['s', 'l'],
+    choices: [keyLeft, keyRight],
     trial_duration: 2000,
-    data: {trial: 'practice trial'},
+    data: {
+        trial: 'practice trial',
+    },
+    on_finish: function(data) {
+        let correctResponse;
+        if (data.stimulus.includes('left')) {
+            correctResponse = keyLeft;
+        } else {
+            correctResponse = keyRight;
+        }
+        data.correct_response =
+            jsPsych.pluginAPI.convertKeyCharacterToKeyCode(correctResponse);
+        data.correct = data.key_press == data.correct_response;
+    },
 };
 
 // Practice procedure
