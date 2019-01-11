@@ -118,9 +118,7 @@ let enterSubjectId = {
     questions: [{prompt: 'Bitte geben Sie Ihren Versuchspersonen-Code ein.'}],
     on_finish: function(data) {
         subjectId = JSON.parse(data.responses).Q0;
-        jsPsych.data.addProperties({
-            subjectId: subjectId,
-        });
+        jsPsych.data.addProperties({subject: subjectId});
     },
 };
 
