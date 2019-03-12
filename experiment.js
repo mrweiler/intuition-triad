@@ -44,11 +44,11 @@ let coherencePosition =
 let coherenceKey;
 let incoherenceKey;
 if (coherencePosition[0] === 'left') {
-    coherenceKey = keyLeft;
-    incoherenceKey = keyRight;
+    coherenceKey = keyLeft.toUpperCase();
+    incoherenceKey = keyRight.toUpperCase();
 } else {
-    coherenceKey = keyRight;
-    incoherenceKey = keyLeft;
+    coherenceKey = keyRight.toUpperCase();
+    incoherenceKey = keyLeft.toUpperCase();
 }
 
 // Coherence judgement
@@ -113,6 +113,7 @@ let tooSlowNode = {
 let solutionWord = {
     type: 'survey-text',
     questions: [{prompt: 'Bitte geben Sie ein X oder ein L&oumlsungswort ein'}],
+    button_label: 'Weiter',
     trial_duration: 8000,
     data: {trial: 'solution word'},
 };
@@ -151,9 +152,6 @@ let enterSubjectId = {
 
 /*
     Reaction practice block
-    Show an exclamation mark either on the left or on the right side of the
-    screen.
-    Number of trials: 20
 */
 
 // Reaction practice block instructions
@@ -330,8 +328,7 @@ let triadPracticeBlockInstructions = {
           + 'Reaktionstaste dr&uumlcken wenn die Triade verschwunden ist und '
           + 'auf dem Bildschirm ZUSAMMENGEW&UumlRFELT und ZUSAMMENH&AumlNGEND '
           + 'erscheint. Bitte klicken Sie nach Eingabe des L&oumlsungswortes '
-          // Continue durch Weiter ersetzen
-          + 'oder des X auf „Continue“  (mit der Maus oder dem Cursor). Danach '
+          + 'oder des X auf „Weiter“  (mit der Maus oder dem Cursor). Danach '
           + 'ist es wichtig, dass Sie ihre Finger wieder auf die '
           + 'Reaktionstasten legen, denn es geht dann direkt mit einer neuen '
           + 'Triade weiter.</p>'
@@ -456,7 +453,7 @@ let intuitionBlockInstructions = {
           + '<p class = "instructions">Beachten Sie auch, dass Sie nach jedem '
           + 'intuitiven Urteil ein L&oumlsungswort oder ein X eintippen '
           + 'k&oumlnnen. Bitte klicken Sie nach Eingabe des L&oumlsungswortes '
-          + 'oder des X auf „Continue“  (mit der Maus oder dem Cursor). Danach '
+          + 'oder des X auf „Weiter“  (mit der Maus oder dem Cursor). Danach '
           + 'ist es wichtig, dass Sie ihre Finger wieder auf die '
           + 'Reaktionstasten legen, denn es geht dann direkt mit einer neuen '
           + 'Triade weiter.</p>'
