@@ -44,11 +44,11 @@ let coherencePosition =
 let coherenceKey;
 let incoherenceKey;
 if (coherencePosition[0] === 'left') {
-    coherenceKey = 'LINKE'.toUpperCase();
-    incoherenceKey = 'RECHTE'.toUpperCase();
+    coherenceKey = 'linke'.toUpperCase();
+    incoherenceKey = 'rechte'.toUpperCase();
 } else {
-    coherenceKey = 'RECHTE'.toUpperCase();
-    incoherenceKey = 'LINKE'.toUpperCase();
+    coherenceKey = 'rechte'.toUpperCase();
+    incoherenceKey = 'linke'.toUpperCase();
 }
 
 // Coherence judgement
