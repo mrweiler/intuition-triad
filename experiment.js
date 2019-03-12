@@ -40,6 +40,17 @@ let coherencePositions = ['left', 'right'];
 let coherencePosition =
     jsPsych.randomization.sampleWithReplacement(coherencePositions, 1);
 
+// Coherence key
+let coherenceKey;
+let incoherenceKey;
+if (coherencePosition[0] === 'left') {
+    coherenceKey = keyLeft;
+    incoherenceKey = keyRight;
+} else {
+    coherenceKey = keyRight;
+    incoherenceKey = keyLeft;
+}
+
 // Coherence judgement
 let coherenceJudgement = {
     type: 'html-keyboard-response',
@@ -165,7 +176,7 @@ let practiceBlockInstructions = {
       + 'f&uumlr diese Reaktion. Dies ist nur ein Trainingsdurchlauf. Sie '
       + 'k&oumlnnen ruhig Fehler machen und sich langsam an die schnelle '
       + 'Reaktionszeit gew&oumlhnen. </p>'
-      + '<p class = "instructions">Mit der Leertaste geht es weiter... </p>'
+      + '<p class = "instructions">Mit der Leertaste geht es weiter... </p>',
     ],
     key_forward: 'space',
     show_clickable_nav: false,
@@ -212,55 +223,92 @@ let practiceProcedure = {
 let practiceBlockDebriefing = {
     type: 'instructions',
     pages: [
-          '<p class = "instructions">Das hat doch schon ausgezeichnet geklappt! Nun sind Sie trainiert für'
-          + ' die kommende Aufgabe.</p>'
-          + '<p class = "instructions">Im Folgenden sehen Sie jeweils immer eine '
-          + 'Gruppe von 3 Wörtern. In der Hälfte der Fälle sind diese Wörter einfach '
-          + 'zufällig zusammengewürfelt. In der anderen Hälfte der Fälle gehören die '
-          + 'Wörter aber zueinander und sind daher zusammenhängend, weil sie auf ein '
-          + 'gemeinsames Lösungswort verweisen.</p><p class = "instructions"> Drücken Sie '
-          + 'bitte die Leertaste, damit Sie einige Beispiele sehen können...</p>'
-        ,
+          '<p class = "instructions">Das hat doch schon ausgezeichnet geklappt!'
+          + ' Nun sind Sie trainiert f&uumlr die kommende Aufgabe.</p>'
+          + '<p class = "instructions">Im Folgenden sehen Sie jeweils immer '
+          + 'eine Gruppe von 3 W&oumlrtern. In der H&aumllfte der F&aumllle '
+          + 'sind diese W&oumlrter einfach zuf&aumlllig zusammengew&uumlrfelt. '
+          + 'In der anderen H&aumllfte der F&aumllle geh&oumlren die '
+          + 'W&oumlrter aber zueinander und sind daher zusammenh&aumlngend, '
+          + 'weil sie auf ein gemeinsames L&oumlsungswort verweisen.</p>'
+          + '<p class = "instructions"> Dr&uumlcken Sie bitte die Leertaste, '
+          + 'damit Sie einige Beispiele sehen k&oumlnnen...</p>',
+
           '<p class = "instructions">1. Beispieltriade</p>'
-          + '<div class="triadblock"><span>Jucken</span><span>Nase</span><span>Staub</span></div>'
-          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
-        ,
-          '<div class="triadblock"><span>Jucken</span><span>Nase</span><span>Staub</span></div>'
-          + '<p class = "instructionscenter">Diese drei Wörter sind ZUSAMMENHÄNGEND.<br>'
-          + 'Sie verweisen alle auf ein gemeinsames Lösungswort, nämlich NIESEN.</p>'
-          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
-        ,
+          + '<div class="triadblock">'
+          + '<span>Jucken</span>'
+          + '<span>Nase</span>'
+          + '<span>Staub</span>'
+          + '</div>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>',
+
+          '<div class="triadblock">'
+          + '<span>Jucken</span>'
+          + '<span>Nase</span>'
+          + '<span>Staub</span>'
+          + '</div>'
+          + '<p class = "instructionscenter">Diese drei W&oumlrter sind '
+          + 'ZUSAMMENH&AumlNGEND.<br>'
+          + 'Sie verweisen alle auf ein gemeinsames L&oumlsungswort, '
+          + 'n&aumlmlich NIESEN.</p>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>',
+
           '<p class = "instructions">2. Beispieltriade</p>'
-          + '<div class="triadblock"><span>Fußball</span><span>Katze</span><span>Kamin</span></div>'
-          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
-        ,
-          '<div class="triadblock"><span>Fußball</span><span>Katze</span><span>Kamin</span></div>'
-          + '<p class = "instructionscenter">Diese drei Wörter sind zufällig '
-          + 'ZUSAMMENGEWÜRFELT.<br>Sie haben kein gemeinsames Lösungswort.</p>'
-          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
-        ,
+          + '<div class="triadblock">'
+          + '<span>Fußball</span>'
+          + '<span>Katze</span>'
+          + '<span>Kamin</span>'
+          + '</div>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>',
+
+          '<div class="triadblock">'
+          + '<span>Fußball</span>'
+          + '<span>Katze</span>'
+          + '<span>Kamin</span>'
+          + '</div>'
+          + '<p class = "instructionscenter">Diese drei W&oumlrter sind '
+          + 'zuf&aumlllig ZUSAMMENGEW&UumlRFELT.<br>Sie haben kein gemeinsames '
+          + 'L&oumlsungswort.</p>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>',
+
           '<p class = "instructions">3. Beispieltriade</p>'
-          + '<div class="triadblock"><span>Oper</span><span>Kern</span><span>Spender</span></div>'
-          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
-        ,
-          '<div class="triadblock"><span>Oper</span><span>Kern</span><span>Spender</span></div>'
-          + '<p class = "instructionscenter">Diese drei Wörter sind ZUSAMMENHÄNGEND.<br>'
-          + 'Sie verweisen auf SEIFE. Wegen SEIFENoper, KernSEIFE und SEIFENspender.</p>'
-          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
-        ,
-          '<p class = "instructions">Das waren ein paar Beispiele. Ihre Aufgabe ist nun, die xxx Taste zu drücken, '
-          + 'wenn eine Wortgruppe ZUSAMMENHÄNGEND ist. Und die yyy Taste, wenn eine '
-          + 'Wortgruppe zufällig ZUSAMMENGEWÜRFELT ist.</p>'
-          + '<p class = "instructions">Sie brauchen das Lösungswort der jeweiligen Wortgruppe nicht zu kennen. '
-          + 'Das ist überhaupt nicht wichtig. Es geht um Ihr spontanes Gefühl dabei. '
-          + 'Also Ihre erste Bauchreaktion.</p><p class = "instructions">Sie können immer erst '
-          + 'die Reaktionstaste drücken wenn die Triade verschwunden ist und auf dem Bildschirm '
-          + 'ZUSAMMENGEWÜRFELT und ZUSAMMENHÄNGEND erscheint. Bitte klicken Sie nach Eingabe '
-          + 'des Lösungswortes oder des X auf „Continue“  (mit der Maus oder dem Cursor). Danach '
-          + 'ist es wichtig, dass Sie ihre Finger wieder auf die Reaktionstasten legen, denn es '
-          + 'geht dann direkt mit einer neuen Triade weiter.</p>'
-          + '<p class = "instructions">Drücken Sie die Leertaste, dann können Sie '
-          + 'an den Beispielen von eben erstmal üben...</p>'
+          + '<div class="triadblock">'
+          + '<span>Oper</span>'
+          + '<span>Kern</span>'
+          + '<span>Spender</span>'
+          + '</div>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>',
+
+          '<div class="triadblock">'
+          + '<span>Oper</span>'
+          + '<span>Kern</span>'
+          + '<span>Spender</span>'
+          + '</div>'
+          + '<p class = "instructionscenter">Diese drei W&oumlrter sind '
+          + 'ZUSAMMENH&AumlNGEND.<br>Sie verweisen auf SEIFE. Wegen '
+          + 'SEIFENoper, KernSEIFE und SEIFENspender.</p>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>',
+
+          '<p class = "instructions">Das waren ein paar Beispiele. Ihre '
+          + 'Aufgabe ist nun, die ' + coherenceKey + ' Taste zu dr&uumlcken, '
+          + 'wenn eine Wortgruppe ZUSAMMENH&AumlNGEND ist. Und die '
+          + incoherenceKey + ' Taste, wenn eine Wortgruppe zuf&aumlllig '
+          + 'ZUSAMMENGEW&UumlRFELT ist.</p>'
+          + '<p class = "instructions">Sie brauchen das L&oumlsungswort der '
+          + 'jeweiligen Wortgruppe nicht zu kennen. Das ist &uumlberhaupt '
+          + 'nicht wichtig. Es geht um Ihr spontanes Gef&uumlhl dabei. Also '
+          + 'Ihre erste Bauchreaktion.</p>'
+          + '<p class = "instructions">Sie k&oumlnnen immer erst die '
+          + 'Reaktionstaste dr&uumlcken wenn die Triade verschwunden ist und '
+          + 'auf dem Bildschirm ZUSAMMENGEW&UumlRFELT und ZUSAMMENH&AumlNGEND '
+          + 'erscheint. Bitte klicken Sie nach Eingabe des L&oumlsungswortes '
+          // Continue durch Weiter ersetzen
+          + 'oder des X auf „Continue“  (mit der Maus oder dem Cursor). Danach '
+          + 'ist es wichtig, dass Sie ihre Finger wieder auf die '
+          + 'Reaktionstasten legen, denn es geht dann direkt mit einer neuen '
+          + 'Triade weiter.</p>'
+          + '<p class = "instructions">Dr&uumlcken Sie die Leertaste, dann '
+          + 'k&oumlnnen Sie an den Beispielen von eben erstmal &uumlben...</p>',
     ],
     show_clickable_nav: false,
     key_forward: 'space',
@@ -269,8 +317,9 @@ let practiceBlockDebriefing = {
     data: {trial: 'practice block debriefing'},
 };
 
-/* hier klickbare Probetriaden?*/
-
+/*
+    hier klickbare Probetriaden?
+*/
 
 
 // Practice block
@@ -304,41 +353,53 @@ incoherenceStimuliPool = jsPsych.randomization.shuffle(incoherenceStimuliPool);
 let intuitionBlockInstructions = {
     type: 'instructions',
     pages: [
-          '<p class = "instructions">Ihre Aufgabe wird es gleich sein, solche Wort-Triaden intuitiv zu beurteilen. '
-          + 'Sie sehen dann viele solcher Wortgruppen wie sie eben präsentiert wurden. '
-          + 'Die Hälfte davon ist ZUSAMMENHÄNGEND. Die Chance ist also fifty-fifty.</p>'
-          + '<p class = "instructions">Reagieren Sie einfach spontan und benutzen Sie Ihre Intuition. Lesen '
-          + 'Sie die jeweilige Wortgruppe erst durch. Erst wenn die Wortgruppe '
-          + 'verschwunden ist, drücken Sie entweder die RECHTE oder die LINKE Taste.</p>'
-          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
-        ,
-          '<p class = "instructions">Sie werden dann nach Ihrer intuitiven Entscheidung jeweils '
-          + 'noch gefragt, was denn das Lösungswort der aktuellen Wortgruppe sein könnte. '
-          + 'Also der gemeinsame Nenner, mit denen alle drei Wörter zusammenhängen. '
-          + 'Diese zweite Aufgabe ist nicht so wichtig. Wenn Ihnen das Lösungswort '
-          + 'ganz offensichtlich eingefallen ist, dann tippen Sie es ein. Wenn Sie '
-          + 'glauben, dass es gar kein Lösungswort gibt, weil die Wortgruppe '
-          + 'zusammengewürfelt war oder es fällt Ihnen nicht ein, obwohl die Wortgruppe '
-          + 'sich zusammenhängend angefühlt hat, dann tragen Sie einfach ein X ein.</p>'
-          + '<p class = "instructions">Also entweder ein Lösungswort oder ein X eintragen.</p>'
-          + '<p class = "instructions">Diese zweite Aufgabe ist aber nicht so wichtig '
-          + 'und denken Sie da nicht so lange nach. Viel '
-          + 'wichtiger ist die erste intuitive Beurteilung nach Ihrem Bauchgefühl.</p>'
-          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
-        ,
-          '<p class = "instructions">So, nun geht es mit der Triaden - Aufgabe los!</p>'
-          + '<p class = "instructions">Nochmal zur Erinnerung: Entscheiden Sie jeweils schnell, '
-          + 'ob die gezeigte Wortgruppe ZUSAMMENHÄNGEND oder ZUSAMMENGEWÜRFELT ist. '
-          + 'ZUSAMMENHÄNGEND bedeutet, dass die drei Wörter auf ein gemeinsames '
-          + 'viertes Wort verweisen (z.B. OPER, SPENDER, KERN verweisen auf SEIFE). Achtung: '
-          + 'Sie können immer erst die Reaktionstaste drücken wenn die Triade verschwunden '
-          + 'ist und auf dem Bildschirm ZUSAMMENGEWÜRFELT und ZUSAMMENHÄNGEND erscheint.</p>'
-          + '<p class = "instructions">Beachten Sie auch, dass Sie nach jedem intuitiven '
-          + 'Urteil ein Lösungswort oder ein X eintippen können. Bitte klicken Sie nach '
-          + 'Eingabe des Lösungswortes oder des X auf „Continue“  (mit der Maus oder dem '
-          + 'Cursor). Danach ist es wichtig, dass Sie ihre Finger wieder auf die Reaktionstasten '
-          + 'legen, denn es geht dann direkt mit einer neuen Triade weiter.</p>'
-          + '<p class = "instructionscenter">Mit Klick auf die Leertaste beginnt die Aufgabe</p>'
+          '<p class = "instructions">Ihre Aufgabe wird es gleich sein, solche '
+          + 'Wort-Triaden intuitiv zu beurteilen. Sie sehen dann viele solcher '
+          + 'Wortgruppen wie sie eben pr&aumlsentiert wurden. Die H&aumllfte '
+          + 'davon ist ZUSAMMENH&AumlNGEND. Die Chance ist also fifty-fifty.'
+          + '</p>'
+          + '<p class = "instructions">Reagieren Sie einfach spontan und '
+          + 'benutzen Sie Ihre Intuition. Lesen Sie die jeweilige Wortgruppe '
+          + 'erst durch. Erst wenn die Wortgruppe verschwunden ist, '
+          + 'dr&uumlcken Sie entweder die RECHTE oder die LINKE Taste.</p>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>',
+
+          '<p class = "instructions">Sie werden dann nach Ihrer intuitiven '
+          + 'Entscheidung jeweils noch gefragt, was denn das L&oumlsungswort '
+          + 'der aktuellen Wortgruppe sein könnte. Also der gemeinsame Nenner, '
+          + 'mit denen alle drei W&oumlrter zusammenhängen. Diese zweite '
+          + 'Aufgabe ist nicht so wichtig. Wenn Ihnen das L&oumlsungswort ganz '
+          + 'offensichtlich eingefallen ist, dann tippen Sie es ein. Wenn Sie '
+          + 'glauben, dass es gar kein L&oumlsungswort gibt, weil die '
+          + 'Wortgruppe zusammengew&uumlrfelt war oder es f&aumlllt Ihnen '
+          + 'nicht ein, obwohl die Wortgruppe sich zusammenh&aumlngend '
+          + 'angef&uumlhlt hat, dann tragen Sie einfach ein X ein.</p>'
+          + '<p class = "instructions">Also entweder ein L&oumlsungswort oder '
+          + 'ein X eintragen.</p>'
+          + '<p class = "instructions">Diese zweite Aufgabe ist aber nicht so '
+          + 'wichtig und denken Sie da nicht so lange nach. Viel wichtiger ist '
+          + 'die erste intuitive Beurteilung nach Ihrem Bauchgef&uumlhl.</p>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>',
+
+          '<p class = "instructions">So, nun geht es mit der Triaden-Aufgabe '
+          + 'los!</p>'
+          + '<p class = "instructions">Nochmal zur Erinnerung: Entscheiden Sie '
+          + 'jeweils schnell, ob die gezeigte Wortgruppe ZUSAMMENH&AumlNGEND '
+          + 'oder ZUSAMMENGEW&UumlRFELT ist. ZUSAMMENH&AumlNGEND bedeutet, '
+          + 'dass die drei W&oumlrter auf ein gemeinsames viertes Wort '
+          + 'verweisen (z.B. OPER, SPENDER, KERN verweisen auf SEIFE). '
+          + 'Achtung: Sie k&oumlnnen immer erst die Reaktionstaste dr&oumlcken '
+          + 'wenn die Triade verschwunden ist und auf dem Bildschirm '
+          + 'ZUSAMMENGEW&UumlRFELT und ZUSAMMENH&AumlNGEND erscheint.</p>'
+          + '<p class = "instructions">Beachten Sie auch, dass Sie nach jedem '
+          + 'intuitiven Urteil ein L&oumlsungswort oder ein X eintippen '
+          + 'k&oumlnnen. Bitte klicken Sie nach Eingabe des L&oumlsungswortes '
+          + 'oder des X auf „Continue“  (mit der Maus oder dem Cursor). Danach '
+          + 'ist es wichtig, dass Sie ihre Finger wieder auf die '
+          + 'Reaktionstasten legen, denn es geht dann direkt mit einer neuen '
+          + 'Triade weiter.</p>'
+          + '<p class = "instructionscenter">Mit Klick auf die Leertaste '
+          + 'beginnt die Aufgabe</p>',
     ],
     show_clickable_nav: false,
     key_forward: 'space',
@@ -417,14 +478,16 @@ let intuitionProcedure = {
 };
 
 // Intuition block debriefing
-/*let intuitionBlockDebriefing = {
+/*
+let intuitionBlockDebriefing = {
     type: 'instructions',
     pages: [
         'This is the intuition block debriefing',
     ],
     show_clickable_nav: true,
     data: {trial: 'intuition block debriefing'},
-};*/
+};
+*/
 
 // Intuition block
 let intuitionBlock = {
@@ -441,15 +504,18 @@ let intuitionBlock = {
 let fluencyBlockInstructions = {
     type: 'instructions',
     pages: [
-        '<p class = "instructions"> Prima. Die erste Aufgabe ist geschafft. In der '
-        + 'nächsten Aufgabe sehen Sie wieder Worttriaden. Jetzt erscheinen die Triaden '
-        + 'in verschiedenen Farben. Ihre Aufgabe ist wieder dieselbe: Entscheiden Sie '
-        + 'einfach spontan und aus dem Bauch heraus, ob die gezeigte Triade ZUSAMMENHÄNGEND '
-        + 'oder ZUSAMMENGEWÜRFELT ist. Es geht wieder um ihr spontanes, erstes BAUCHGEFÜHL. '
-        + 'Auch hier haben Sie wieder die Möglichkeit, einen möglichen gemeinsamen Nenner '
-        + 'einzutippen oder ein X. Aber diese Aufgabe ist zweitrangig. Es geht um ihre '
-        + 'spontan-intuitiven Urteile.</p><p class = "instructionscenter">Mit Klick auf '
-        + 'die Leertaste beginnt die Aufgabe</p>'
+        '<p class = "instructions"> Prima. Die erste Aufgabe ist geschafft. '
+        + 'In der n&aumlchsten Aufgabe sehen Sie wieder Worttriaden. Jetzt '
+        + 'erscheinen die Triaden in verschiedenen Farben. Ihre Aufgabe ist '
+        + 'wieder dieselbe: Entscheiden Sie einfach spontan und aus dem Bauch '
+        + 'heraus, ob die gezeigte Triade ZUSAMMENH&AumlNGEND oder '
+        + 'ZUSAMMENGEW&UumlRFELT ist. Es geht wieder um ihr spontanes, erstes '
+        + 'BAUCHGEF&UumlHL. Auch hier haben Sie wieder die M&oumlglichkeit, '
+        + 'einen m&oumlglichen gemeinsamen Nenner einzutippen oder ein X. Aber '
+        + 'diese Aufgabe ist zweitrangig. Es geht um ihre spontan-intuitiven '
+        + 'Urteile.</p>'
+        + '<p class = "instructionscenter">Mit Klick auf die Leertaste beginnt '
+        + 'die Aufgabe</p>',
     ],
     show_clickable_nav: false,
     key_forward: 'space',
@@ -550,14 +616,16 @@ let fluencyProcedure = {
 };
 
 // Fluency block debriefing
-/*let fluencyBlockDebriefing = {
+/*
+let fluencyBlockDebriefing = {
     type: 'instructions',
     pages: [
         'This is the fluency block debriefing',
     ],
     show_clickable_nav: true,
     data: {trial: 'fluency block debriefing'},
-};*/
+};
+*/
 
 // Manipulation check 1
 let manipulationCheck1 = {
@@ -602,10 +670,12 @@ let fluencyBlock = {
 let affectiveBlockInstructions = {
     type: 'instructions',
     pages: [
-        '<p class = "instructions">Super! Jetzt kommt der letzte Aufgabenteil. Gleich '
-        + 'ist es geschafft. Die Aufgabe bleibt die gleiche.  Sie sehen wieder Worttriaden '
-        + 'und sollen aus aus dem Bauch heraus entscheiden: ZUSAMMENHÄNGEND oder ZUSAMMENGEWÜRFELT?</p>'
-        + '<p class = "instructionscenter">Mit Klick auf die Leertaste beginnt die Aufgabe</p>'
+        '<p class = "instructions">Super! Jetzt kommt der letzte Aufgabenteil. '
+        + 'Gleich ist es geschafft. Die Aufgabe bleibt die gleiche.  Sie sehen '
+        + 'wieder Worttriaden und sollen aus aus dem Bauch heraus entscheiden: '
+        + 'ZUSAMMENH&AumlNGEND oder ZUSAMMENGEW&UumlRFELT?</p>'
+        + '<p class = "instructionscenter">Mit Klick auf die Leertaste beginnt '
+        + 'die Aufgabe</p>',
     ],
     show_clickable_nav: false,
     key_forward: 'space',
