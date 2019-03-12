@@ -227,7 +227,7 @@ let reactionPracticeBlockDebriefing = {
     ],
     show_clickable_nav: false,
     key_forward: 'space',
-    button_label_previous: 'zurück',
+    button_label_previous: 'zur&uumlck',
     button_label_next: 'weiter',
     data: {trial: 'reaction practice block debriefing'},
 };
@@ -376,7 +376,7 @@ let triadPracticeBlockDebriefing = {
     ],
     show_clickable_nav: false,
     key_forward: 'space',
-    button_label_previous: 'zurück',
+    button_label_previous: 'zur&uumlck',
     button_label_next: 'weiter',
     data: {trial: 'triad practice block debriefing'},
 };
@@ -425,14 +425,15 @@ let intuitionBlockInstructions = {
 
           '<p class = "instructions">Sie werden dann nach Ihrer intuitiven '
           + 'Entscheidung jeweils noch gefragt, was denn das L&oumlsungswort '
-          + 'der aktuellen Wortgruppe sein könnte. Also der gemeinsame Nenner, '
-          + 'mit denen alle drei W&oumlrter zusammenhängen. Diese zweite '
-          + 'Aufgabe ist nicht so wichtig. Wenn Ihnen das L&oumlsungswort ganz '
-          + 'offensichtlich eingefallen ist, dann tippen Sie es ein. Wenn Sie '
-          + 'glauben, dass es gar kein L&oumlsungswort gibt, weil die '
-          + 'Wortgruppe zusammengew&uumlrfelt war oder es f&aumlllt Ihnen '
-          + 'nicht ein, obwohl die Wortgruppe sich zusammenh&aumlngend '
-          + 'angef&uumlhlt hat, dann tragen Sie einfach ein X ein.</p>'
+          + 'der aktuellen Wortgruppe sein k&oumlnnte. Also der gemeinsame '
+          + 'Nenner, mit denen alle drei W&oumlrter zusammenh&aumlngen. Diese '
+          + 'zweite Aufgabe ist nicht so wichtig. Wenn Ihnen das '
+          + 'L&oumlsungswort ganz offensichtlich eingefallen ist, dann tippen '
+          + 'Sie es ein. Wenn Sie glauben, dass es gar kein L&oumlsungswort '
+          + 'gibt, weil die Wortgruppe zusammengew&uumlrfelt war oder es '
+          + 'f&aumlllt Ihnen nicht ein, obwohl die Wortgruppe sich '
+          + 'zusammenh&aumlngend angef&uumlhlt hat, dann tragen Sie einfach '
+          + 'ein X ein.</p>'
           + '<p class = "instructions">Also entweder ein L&oumlsungswort oder '
           + 'ein X eintragen.</p>'
           + '<p class = "instructions">Diese zweite Aufgabe ist aber nicht so '
