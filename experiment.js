@@ -78,7 +78,7 @@ let coherenceJudgement = {
 // Warning that reaction is too slow
 let tooSlow = {
     type: 'html-keyboard-response',
-    stimulus: 'Please respond faster!',
+    stimulus: 'Zu langsam',
     choices: jsPsych.NO_KEYS,
     trial_duration: 1000,
     data: {trial: 'too slow'},
@@ -131,23 +131,12 @@ let subjectId;
 let enterSubjectId = {
     type: 'survey-text',
     questions: [{prompt: 'Bitte geben Sie Ihren Versuchspersonen-Code ein.'}],
+    button_label: 'Weiter',
     on_finish: function(data) {
         subjectId = JSON.parse(data.responses).Q0;
         jsPsych.data.addProperties({subject: subjectId});
     },
 };
-
-// General instructions
-let instructions = {
-    type: 'instructions',
-    pages: [
-        'First page with general instructions',
-        'Second page with general instructions',
-    ],
-    show_clickable_nav: true,
-    data: {trial: 'general instructions'},
-};
-
 
 /*
     Practice block
@@ -160,23 +149,23 @@ let instructions = {
 let practiceBlockInstructions = {
     type: 'instructions',
     pages: [
-        '<p class = "instructions">Nun kommt eine Aufgabe, in der Sie schnell '
-        + 'reagieren sollen. </p>'
-        + '<p class = "instructions">Zuerst kommt ein Training, in dem Sie '
-        + 'lernen, in einer vorgegebenen Zeit schnell zu reagieren. Sie sehen '
-        + 'im Folgenden immer ein Kreuz in der Mitte des Bildschirms f&uumlr '
-        + 'eine kurze Zeit erscheinen. Danach taucht ein Ausrufezeichen rechts '
-        + 'oder links von dem Kreuz auf.</p>'
-        + '<p class = "instructions">Dr&uumlcken Sie bitte, wenn das '
-        + 'Ausrufezeichen rechts erscheint, so schnell wie m&oumlglich auf die '
-        + 'rechte Reaktionstaste von der Tastatur. Wenn das Ausrufezeichen '
-        + 'links erscheint, dann dr&uumlcken Sie bitte auf die linke '
-        + 'Reaktionstaste auf der Tastatur. </p>'
-        + '<p class = "instructions">Sie haben jeweils nur 2 Sekunden Zeit '
-        + 'f&uumlr diese Reaktion. Dies ist nur ein Trainingsdurchlauf. Sie '
-        + 'k&oumlnnen ruhig Fehler machen und sich langsam an die schnelle '
-        + 'Reaktionszeit gew&oumlhnen. </p>'
-        + '<p class = "instructions">Mit der Leertaste geht es weiter... </p>',
+      '<p class = "instructions">Nun kommt eine Aufgabe, in der Sie schnell '
+      + 'reagieren sollen. </p>'
+      + '<p class = "instructions">Zuerst kommt ein Training, in dem Sie '
+      + 'lernen, in einer vorgegebenen Zeit schnell zu reagieren. Sie sehen '
+      + 'im Folgenden immer ein Kreuz in der Mitte des Bildschirms f&uumlr '
+      + 'eine kurze Zeit erscheinen. Danach taucht ein Ausrufezeichen rechts '
+      + 'oder links von dem Kreuz auf.</p>'
+      + '<p class = "instructions">Dr&uumlcken Sie bitte, wenn das '
+      + 'Ausrufezeichen rechts erscheint, so schnell wie m&oumlglich auf die '
+      + 'rechte Reaktionstaste von der Tastatur. Wenn das Ausrufezeichen '
+      + 'links erscheint, dann dr&uumlcken Sie bitte auf die linke '
+      + 'Reaktionstaste auf der Tastatur. </p>'
+      + '<p class = "instructions">Sie haben jeweils nur 2 Sekunden Zeit '
+      + 'f&uumlr diese Reaktion. Dies ist nur ein Trainingsdurchlauf. Sie '
+      + 'k&oumlnnen ruhig Fehler machen und sich langsam an die schnelle '
+      + 'Reaktionszeit gew&oumlhnen. </p>'
+      + '<p class = "instructions">Mit der Leertaste geht es weiter... </p>'
     ],
     key_forward: 'space',
     show_clickable_nav: false,
@@ -223,11 +212,66 @@ let practiceProcedure = {
 let practiceBlockDebriefing = {
     type: 'instructions',
     pages: [
-        'This is the practice block debriefing',
+          '<p class = "instructions">Das hat doch schon ausgezeichnet geklappt! Nun sind Sie trainiert für'
+          + ' die kommende Aufgabe.</p>'
+          + '<p class = "instructions">Im Folgenden sehen Sie jeweils immer eine '
+          + 'Gruppe von 3 Wörtern. In der Hälfte der Fälle sind diese Wörter einfach '
+          + 'zufällig zusammengewürfelt. In der anderen Hälfte der Fälle gehören die '
+          + 'Wörter aber zueinander und sind daher zusammenhängend, weil sie auf ein '
+          + 'gemeinsames Lösungswort verweisen.</p><p class = "instructions"> Drücken Sie '
+          + 'bitte die Leertaste, damit Sie einige Beispiele sehen können...</p>'
+        ,
+          '<p class = "instructions">1. Beispieltriade</p>'
+          + '<div class="triadblock"><span>Jucken</span><span>Nase</span><span>Staub</span></div>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
+        ,
+          '<div class="triadblock"><span>Jucken</span><span>Nase</span><span>Staub</span></div>'
+          + '<p class = "instructionscenter">Diese drei Wörter sind ZUSAMMENHÄNGEND.<br>'
+          + 'Sie verweisen alle auf ein gemeinsames Lösungswort, nämlich NIESEN.</p>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
+        ,
+          '<p class = "instructions">2. Beispieltriade</p>'
+          + '<div class="triadblock"><span>Fußball</span><span>Katze</span><span>Kamin</span></div>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
+        ,
+          '<div class="triadblock"><span>Fußball</span><span>Katze</span><span>Kamin</span></div>'
+          + '<p class = "instructionscenter">Diese drei Wörter sind zufällig '
+          + 'ZUSAMMENGEWÜRFELT.<br>Sie haben kein gemeinsames Lösungswort.</p>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
+        ,
+          '<p class = "instructions">3. Beispieltriade</p>'
+          + '<div class="triadblock"><span>Oper</span><span>Kern</span><span>Spender</span></div>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
+        ,
+          '<div class="triadblock"><span>Oper</span><span>Kern</span><span>Spender</span></div>'
+          + '<p class = "instructionscenter">Diese drei Wörter sind ZUSAMMENHÄNGEND.<br>'
+          + 'Sie verweisen auf SEIFE. Wegen SEIFENoper, KernSEIFE und SEIFENspender.</p>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
+        ,
+          '<p class = "instructions">Das waren ein paar Beispiele. Ihre Aufgabe ist nun, die xxx Taste zu drücken, '
+          + 'wenn eine Wortgruppe ZUSAMMENHÄNGEND ist. Und die yyy Taste, wenn eine '
+          + 'Wortgruppe zufällig ZUSAMMENGEWÜRFELT ist.</p>'
+          + '<p class = "instructions">Sie brauchen das Lösungswort der jeweiligen Wortgruppe nicht zu kennen. '
+          + 'Das ist überhaupt nicht wichtig. Es geht um Ihr spontanes Gefühl dabei. '
+          + 'Also Ihre erste Bauchreaktion.</p><p class = "instructions">Sie können immer erst '
+          + 'die Reaktionstaste drücken wenn die Triade verschwunden ist und auf dem Bildschirm '
+          + 'ZUSAMMENGEWÜRFELT und ZUSAMMENHÄNGEND erscheint. Bitte klicken Sie nach Eingabe '
+          + 'des Lösungswortes oder des X auf „Continue“  (mit der Maus oder dem Cursor). Danach '
+          + 'ist es wichtig, dass Sie ihre Finger wieder auf die Reaktionstasten legen, denn es '
+          + 'geht dann direkt mit einer neuen Triade weiter.</p>'
+          + '<p class = "instructions">Drücken Sie die Leertaste, dann können Sie '
+          + 'an den Beispielen von eben erstmal üben...</p>'
     ],
-    show_clickable_nav: true,
+    show_clickable_nav: false,
+    key_forward: 'space',
+    button_label_previous: 'zurück',
+    button_label_next: 'weiter',
     data: {trial: 'practice block debriefing'},
 };
+
+/* hier klickbare Probetriaden?*/
+
+
 
 // Practice block
 let practiceBlock = {
@@ -260,10 +304,44 @@ incoherenceStimuliPool = jsPsych.randomization.shuffle(incoherenceStimuliPool);
 let intuitionBlockInstructions = {
     type: 'instructions',
     pages: [
-        'First page with intuition block instructions',
-        'Second page with intuition block instructions',
+          '<p class = "instructions">Ihre Aufgabe wird es gleich sein, solche Wort-Triaden intuitiv zu beurteilen. '
+          + 'Sie sehen dann viele solcher Wortgruppen wie sie eben präsentiert wurden. '
+          + 'Die Hälfte davon ist ZUSAMMENHÄNGEND. Die Chance ist also fifty-fifty.</p>'
+          + '<p class = "instructions">Reagieren Sie einfach spontan und benutzen Sie Ihre Intuition. Lesen '
+          + 'Sie die jeweilige Wortgruppe erst durch. Erst wenn die Wortgruppe '
+          + 'verschwunden ist, drücken Sie entweder die RECHTE oder die LINKE Taste.</p>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
+        ,
+          '<p class = "instructions">Sie werden dann nach Ihrer intuitiven Entscheidung jeweils '
+          + 'noch gefragt, was denn das Lösungswort der aktuellen Wortgruppe sein könnte. '
+          + 'Also der gemeinsame Nenner, mit denen alle drei Wörter zusammenhängen. '
+          + 'Diese zweite Aufgabe ist nicht so wichtig. Wenn Ihnen das Lösungswort '
+          + 'ganz offensichtlich eingefallen ist, dann tippen Sie es ein. Wenn Sie '
+          + 'glauben, dass es gar kein Lösungswort gibt, weil die Wortgruppe '
+          + 'zusammengewürfelt war oder es fällt Ihnen nicht ein, obwohl die Wortgruppe '
+          + 'sich zusammenhängend angefühlt hat, dann tragen Sie einfach ein X ein.</p>'
+          + '<p class = "instructions">Also entweder ein Lösungswort oder ein X eintragen.</p>'
+          + '<p class = "instructions">Diese zweite Aufgabe ist aber nicht so wichtig '
+          + 'und denken Sie da nicht so lange nach. Viel '
+          + 'wichtiger ist die erste intuitive Beurteilung nach Ihrem Bauchgefühl.</p>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>'
+        ,
+          '<p class = "instructions">So, nun geht es mit der Triaden - Aufgabe los!</p>'
+          + '<p class = "instructions">Nochmal zur Erinnerung: Entscheiden Sie jeweils schnell, '
+          + 'ob die gezeigte Wortgruppe ZUSAMMENHÄNGEND oder ZUSAMMENGEWÜRFELT ist. '
+          + 'ZUSAMMENHÄNGEND bedeutet, dass die drei Wörter auf ein gemeinsames '
+          + 'viertes Wort verweisen (z.B. OPER, SPENDER, KERN verweisen auf SEIFE). Achtung: '
+          + 'Sie können immer erst die Reaktionstaste drücken wenn die Triade verschwunden '
+          + 'ist und auf dem Bildschirm ZUSAMMENGEWÜRFELT und ZUSAMMENHÄNGEND erscheint.</p>'
+          + '<p class = "instructions">Beachten Sie auch, dass Sie nach jedem intuitiven '
+          + 'Urteil ein Lösungswort oder ein X eintippen können. Bitte klicken Sie nach '
+          + 'Eingabe des Lösungswortes oder des X auf „Continue“  (mit der Maus oder dem '
+          + 'Cursor). Danach ist es wichtig, dass Sie ihre Finger wieder auf die Reaktionstasten '
+          + 'legen, denn es geht dann direkt mit einer neuen Triade weiter.</p>'
+          + '<p class = "instructionscenter">Mit Klick auf die Leertaste beginnt die Aufgabe</p>'
     ],
-    show_clickable_nav: true,
+    show_clickable_nav: false,
+    key_forward: 'space',
     data: {trial: 'intuition block instructions'},
 };
 
@@ -339,19 +417,19 @@ let intuitionProcedure = {
 };
 
 // Intuition block debriefing
-let intuitionBlockDebriefing = {
+/*let intuitionBlockDebriefing = {
     type: 'instructions',
     pages: [
         'This is the intuition block debriefing',
     ],
     show_clickable_nav: true,
     data: {trial: 'intuition block debriefing'},
-};
+};*/
 
 // Intuition block
 let intuitionBlock = {
     timeline: [intuitionBlockInstructions, intuitionProcedure,
-    confidenceRating, intuitionBlockDebriefing],
+    confidenceRating],
 };
 
 
@@ -363,10 +441,18 @@ let intuitionBlock = {
 let fluencyBlockInstructions = {
     type: 'instructions',
     pages: [
-        'First page with fluency block instructions',
-        'Second page with fluency block instructions',
+        '<p class = "instructions"> Prima. Die erste Aufgabe ist geschafft. In der '
+        + 'nächsten Aufgabe sehen Sie wieder Worttriaden. Jetzt erscheinen die Triaden '
+        + 'in verschiedenen Farben. Ihre Aufgabe ist wieder dieselbe: Entscheiden Sie '
+        + 'einfach spontan und aus dem Bauch heraus, ob die gezeigte Triade ZUSAMMENHÄNGEND '
+        + 'oder ZUSAMMENGEWÜRFELT ist. Es geht wieder um ihr spontanes, erstes BAUCHGEFÜHL. '
+        + 'Auch hier haben Sie wieder die Möglichkeit, einen möglichen gemeinsamen Nenner '
+        + 'einzutippen oder ein X. Aber diese Aufgabe ist zweitrangig. Es geht um ihre '
+        + 'spontan-intuitiven Urteile.</p><p class = "instructionscenter">Mit Klick auf '
+        + 'die Leertaste beginnt die Aufgabe</p>'
     ],
-    show_clickable_nav: true,
+    show_clickable_nav: false,
+    key_forward: 'space',
     data: {trial: 'fluency block instructions'},
 };
 
@@ -464,14 +550,14 @@ let fluencyProcedure = {
 };
 
 // Fluency block debriefing
-let fluencyBlockDebriefing = {
+/*let fluencyBlockDebriefing = {
     type: 'instructions',
     pages: [
         'This is the fluency block debriefing',
     ],
     show_clickable_nav: true,
     data: {trial: 'fluency block debriefing'},
-};
+};*/
 
 // Manipulation check 1
 let manipulationCheck1 = {
@@ -504,7 +590,7 @@ let manipulationCheck2Node = {
 // Fluency block
 let fluencyBlock = {
     timeline: [fluencyBlockInstructions, fluencyProcedure, confidenceRating,
-        manipulationCheck1, manipulationCheck2Node, fluencyBlockDebriefing],
+        manipulationCheck1, manipulationCheck2Node],
 };
 
 
@@ -516,10 +602,13 @@ let fluencyBlock = {
 let affectiveBlockInstructions = {
     type: 'instructions',
     pages: [
-        'First page with affective block instructions',
-        'Second page with affective block instructions',
+        '<p class = "instructions">Super! Jetzt kommt der letzte Aufgabenteil. Gleich '
+        + 'ist es geschafft. Die Aufgabe bleibt die gleiche.  Sie sehen wieder Worttriaden '
+        + 'und sollen aus aus dem Bauch heraus entscheiden: ZUSAMMENHÄNGEND oder ZUSAMMENGEWÜRFELT?</p>'
+        + '<p class = "instructionscenter">Mit Klick auf die Leertaste beginnt die Aufgabe</p>'
     ],
-    show_clickable_nav: true,
+    show_clickable_nav: false,
+    key_forward: 'space',
     data: {trial: 'affective block instructions'},
 };
 
@@ -661,7 +750,7 @@ let affectiveBlock = {
 
 // Main
 jsPsych.init({
-    timeline: [enterSubjectId, instructions, practiceBlock, intuitionBlock,
+    timeline: [enterSubjectId, practiceBlock, intuitionBlock,
         fluencyBlock, affectiveBlock],
     on_finish: function() {
         let d = new Date();

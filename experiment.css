@@ -30,3 +30,16 @@
 	position: absolute;
 	right: 10%;
 }
+
+.triadblock {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	line-height: 1;
+	margin: 50px 0;
+}
+
+.instructionscenter {
+	text-align: center;
+	margin-top: 50px;
+}
