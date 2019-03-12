@@ -225,7 +225,35 @@ let reactionPracticeBlockDebriefing = {
     pages: [
           '<p class = "instructions">Das hat doch schon ausgezeichnet geklappt!'
           + ' Nun sind Sie trainiert f&uumlr die kommende Aufgabe.</p>'
-          + '<p class = "instructions">Im Folgenden sehen Sie jeweils immer '
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>',
+    ],
+    show_clickable_nav: false,
+    key_forward: 'space',
+    button_label_previous: 'zurück',
+    button_label_next: 'weiter',
+    data: {trial: 'reaction practice block debriefing'},
+};
+
+// Reaction practice block
+let reactionPracticeBlock = {
+    timeline: [reactionPracticeBlockInstructions, reactionPracticeProcedure,
+        reactionPracticeBlockDebriefing],
+};
+
+
+/*
+    hier klickbare Probetriaden?
+*/
+
+/*
+    Triad practice block
+*/
+
+// Triad practice block instructions
+let triadPracticeBlockInstructions = {
+    type: 'instructions',
+    pages: [
+            '<p class = "instructions">Im Folgenden sehen Sie jeweils immer '
           + 'eine Gruppe von 3 W&oumlrtern. In der H&aumllfte der F&aumllle '
           + 'sind diese W&oumlrter einfach zuf&aumlllig zusammengew&uumlrfelt. '
           + 'In der anderen H&aumllfte der F&aumllle geh&oumlren die '
@@ -309,24 +337,58 @@ let reactionPracticeBlockDebriefing = {
           + 'Triade weiter.</p>'
           + '<p class = "instructions">Dr&uumlcken Sie die Leertaste, dann '
           + 'k&oumlnnen Sie an den Beispielen von eben erstmal &uumlben...</p>',
+
+    ],
+    key_forward: 'space',
+    show_clickable_nav: false,
+    data: {trial: 'triad practice block instructions'},
+};
+
+// Triad practice stimuli
+let triadPracticeStimuli = [
+    {triadPracticeStimulus: 'img/prob_01.png'},
+    {triadPracticeStimulus: 'img/prob_02.png'},
+    {triadPracticeStimulus: 'img/prob_03.png'},
+];
+
+// Triad practice trial
+let triadPracticeTrial = {
+    type: 'image-keyboard-response',
+    stimulus: jsPsych.timelineVariable('triadPracticeStimulus'),
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 1500,
+    data: {trial: 'triad practice trial'},
+};
+
+
+// Triad practice procedure
+let triadPracticeProcedure = {
+    timeline: [fixationCross, triadPracticeTrial, coherenceJudgement,
+    tooSlowNode],
+    timeline_variables: triadPracticeStimuli,
+    randomize_order: true,
+};
+
+// Triad practice block debriefing
+let triadPracticeBlockDebriefing = {
+    type: 'instructions',
+    pages: [
+          '<p class = "instructions">Das hat doch schon ausgezeichnet geklappt!'
+          + ' Nun sind Sie trainiert f&uumlr die kommende Aufgabe.</p>'
+          + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>',
     ],
     show_clickable_nav: false,
     key_forward: 'space',
     button_label_previous: 'zurück',
     button_label_next: 'weiter',
-    data: {trial: 'reaction practice block debriefing'},
+    data: {trial: 'triad practice block debriefing'},
 };
 
-// Reaction practice block
-let reactionPracticeBlock = {
-    timeline: [reactionPracticeBlockInstructions, reactionPracticeProcedure,
-        reactionPracticeBlockDebriefing],
+// Triad practice block
+let triadPracticeBlock = {
+    timeline: [triadPracticeBlockInstructions, triadPracticeProcedure,
+        triadPracticeBlockDebriefing],
 };
-
-
-/*
-    hier klickbare Probetriaden?
-*/
 
 
 /*
@@ -820,8 +882,8 @@ let affectiveBlock = {
 
 // Main
 jsPsych.init({
-    timeline: [enterSubjectId, reactionPracticeBlock, intuitionBlock,
-        fluencyBlock, affectiveBlock],
+    timeline: [enterSubjectId, reactionPracticeBlock, triadPracticeBlock,
+    intuitionBlock, fluencyBlock, affectiveBlock],
     on_finish: function() {
         let d = new Date();
         jsPsych.data.get().localSave('csv',
