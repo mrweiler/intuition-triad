@@ -240,10 +240,6 @@ let reactionPracticeBlock = {
 
 
 /*
-    hier klickbare Probetriaden?
-*/
-
-/*
     Triad practice block
 */
 
