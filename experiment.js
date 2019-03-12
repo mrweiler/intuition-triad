@@ -150,14 +150,14 @@ let enterSubjectId = {
 };
 
 /*
-    Practice block
+    Reaction practice block
     Show an exclamation mark either on the left or on the right side of the
     screen.
     Number of trials: 20
 */
 
-// Practice block instructions
-let practiceBlockInstructions = {
+// Reaction practice block instructions
+let reactionPracticeBlockInstructions = {
     type: 'instructions',
     pages: [
       '<p class = "instructions">Nun kommt eine Aufgabe, in der Sie schnell '
@@ -180,23 +180,23 @@ let practiceBlockInstructions = {
     ],
     key_forward: 'space',
     show_clickable_nav: false,
-    data: {trial: 'practice block instructions'},
+    data: {trial: 'reaction practice block instructions'},
 };
 
-// Practice stimuli
-let practiceStimuli = [
-    {practiceStimulus: '<div class="practiceleft">!</div>'},
-    {practiceStimulus: '<div class="practiceright">!</div>'},
+// Reaction practice stimuli
+let reactionPracticeStimuli = [
+    {reactionPracticeStimulus: '<div class="reactionpracticeleft">!</div>'},
+    {reactionPracticeStimulus: '<div class="reactionpracticeright">!</div>'},
 ];
 
-// Practice trial
-let practiceTrial = {
+// Reaction practice trial
+let reactionPracticeTrial = {
     type: 'html-keyboard-response',
-    stimulus: jsPsych.timelineVariable('practiceStimulus'),
+    stimulus: jsPsych.timelineVariable('reactionPracticeStimulus'),
     choices: [keyLeft, keyRight],
     trial_duration: 2000,
     data: {
-        trial: 'practice trial',
+        trial: 'reaction practice trial',
     },
     on_finish: function(data) {
         let correctResponse;
@@ -211,16 +211,16 @@ let practiceTrial = {
     },
 };
 
-// Practice procedure
-let practiceProcedure = {
-    timeline: [fixationCross, practiceTrial, tooSlowNode],
-    timeline_variables: practiceStimuli,
+// Reaction practice procedure
+let reactionPracticeProcedure = {
+    timeline: [fixationCross, reactionPracticeTrial, tooSlowNode],
+    timeline_variables: reactionPracticeStimuli,
     randomize_order: true,
     repetitions: 10,
 };
 
-// Practice block debriefing
-let practiceBlockDebriefing = {
+// Reaction practice block debriefing
+let reactionPracticeBlockDebriefing = {
     type: 'instructions',
     pages: [
           '<p class = "instructions">Das hat doch schon ausgezeichnet geklappt!'
@@ -314,19 +314,19 @@ let practiceBlockDebriefing = {
     key_forward: 'space',
     button_label_previous: 'zurück',
     button_label_next: 'weiter',
-    data: {trial: 'practice block debriefing'},
+    data: {trial: 'reaction practice block debriefing'},
 };
+
+// Reaction practice block
+let reactionPracticeBlock = {
+    timeline: [reactionPracticeBlockInstructions, reactionPracticeProcedure,
+        reactionPracticeBlockDebriefing],
+};
+
 
 /*
     hier klickbare Probetriaden?
 */
-
-
-// Practice block
-let practiceBlock = {
-    timeline: [practiceBlockInstructions, practiceProcedure,
-        practiceBlockDebriefing],
-};
 
 
 /*
@@ -820,7 +820,7 @@ let affectiveBlock = {
 
 // Main
 jsPsych.init({
-    timeline: [enterSubjectId, practiceBlock, intuitionBlock,
+    timeline: [enterSubjectId, reactionPracticeBlock, intuitionBlock,
         fluencyBlock, affectiveBlock],
     on_finish: function() {
         let d = new Date();
