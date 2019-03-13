@@ -51,6 +51,9 @@ if (coherencePosition[0] === 'left') {
     incoherenceKey = 'linke'.toUpperCase();
 }
 
+// Trial duration for coherence judgement
+let coherenceJudgementTrialDuration = 2000;
+
 // Coherence judgement
 let coherenceJudgement = {
     type: 'html-keyboard-response',
@@ -64,7 +67,9 @@ let coherenceJudgement = {
         }
     },
     choices: [keyLeft, keyRight],
-    trial_duration: 2000,
+    trial_duration: function() {
+        return coherenceJudgementTrialDuration;
+    },
     data: {
         coherence_position: coherencePosition[0],
         trial: 'coherence judgement',
@@ -335,6 +340,11 @@ let triadPracticeBlockInstructions = {
     key_forward: 'space',
     show_clickable_nav: false,
     data: {trial: 'triad practice block instructions'},
+    on_finish: function() {
+        // No time limit for the practice trials
+        coherenceJudgementTrialDuration = null;
+    },
+
 };
 
 // Triad practice stimuli
@@ -375,6 +385,10 @@ let triadPracticeBlockDebriefing = {
     button_label_previous: 'zur&uumlck',
     button_label_next: 'weiter',
     data: {trial: 'triad practice block debriefing'},
+    on_finish: function() {
+        // Set to original value
+        coherenceJudgementTrialDuration = 2000;
+    },
 };
 
 // Triad practice block
