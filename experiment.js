@@ -77,10 +77,11 @@ let coherenceJudgement = {
     },
     on_finish: function(data) {
         let correctResponse;
-        if ((data.stimulus.includes('koh')) &&
+        let lastTrial = jsPsych.data.get().last(2).select('stimulus').values[0];
+        if ((lastTrial.includes('koh')) &&
                 (coherencePosition[0] === 'left')) {
             correctResponse = keyLeft;
-        } else if ((data.stimulus.includes('ink')) &&
+        } else if ((lastTrial.includes('ink')) &&
                 (coherencePosition[0] === 'right')) {
             correctResponse = keyLeft;
         } else {
@@ -892,7 +893,7 @@ let affectiveBlock = {
 // Main
 jsPsych.init({
     timeline: [enterSubjectId, reactionPracticeBlock, triadPracticeBlock,
-    intuitionBlock, fluencyBlock, affectiveBlock],
+        intuitionBlock, fluencyBlock, affectiveBlock],
     on_finish: function() {
         let d = new Date();
         jsPsych.data.get().localSave('csv',
