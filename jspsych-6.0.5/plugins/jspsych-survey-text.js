@@ -60,7 +60,13 @@ jsPsych.plugins['survey-text'] = (function() {
         pretty_name: 'Button label',
         default:  'Continue',
         description: 'The text that appears on the button to finish the trial.'
-      }
+      },
+      trial_duration: {
+        type: jsPsych.plugins.parameterType.INT,
+        pretty_name: 'Trial duration',
+        default: null,
+        description: 'How long to show trial before it ends.'
+      },
     }
   }
 
@@ -133,6 +139,44 @@ jsPsych.plugins['survey-text'] = (function() {
     });
 
     var startTime = (new Date()).getTime();
+
+    // function to end trial when it is time
+    var end_trial = function() {
+
+      // measure response time
+      var endTime = (new Date()).getTime();
+      var response_time = endTime - startTime;
+
+      // create object to hold responses
+      var question_data = {};
+      var matches = display_element.querySelectorAll('div.jspsych-survey-text-question');
+      for(var index=0; index<matches.length; index++){
+        var id = "Q" + index;
+        var val = matches[index].querySelector('textarea, input').value;
+        var obje = {};
+        obje[id] = val;
+        Object.assign(question_data, obje);
+      }
+      // save data
+      var trialdata = {
+        "rt": response_time,
+        "responses": JSON.stringify(question_data)
+      };
+
+      display_element.innerHTML = '';
+
+      // next trial
+      jsPsych.finishTrial(trialdata);
+    };
+
+    // end trial if trial_duration is set
+    if (trial.trial_duration !== null) {
+      jsPsych.pluginAPI.setTimeout(function() {
+        end_trial();
+      }, trial.trial_duration);
+    }
+
+
   };
 
   return plugin;
