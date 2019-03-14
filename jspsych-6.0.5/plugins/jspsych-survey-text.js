@@ -60,13 +60,7 @@ jsPsych.plugins['survey-text'] = (function() {
         pretty_name: 'Button label',
         default:  'Continue',
         description: 'The text that appears on the button to finish the trial.'
-      },
-      trial_duration: {
-        type: jsPsych.plugins.parameterType.INT,
-        pretty_name: 'Trial duration',
-        default: null,
-        description: 'How long to show trial before it ends.'
-      },
+      }
     }
   }
 
@@ -111,18 +105,7 @@ jsPsych.plugins['survey-text'] = (function() {
 
     display_element.innerHTML = html;
 
-    display_element.querySelector('#jspsych-survey-text-next').addEventListener('click', end_trial);
-    document.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        end_trial();
-      }
-    });
-
-    var startTime = (new Date()).getTime();
-
-    // function to end trial when it is time
-    function end_trial() {
-
+    display_element.querySelector('#jspsych-survey-text-next').addEventListener('click', function() {
       // measure response time
       var endTime = (new Date()).getTime();
       var response_time = endTime - startTime;
@@ -147,16 +130,9 @@ jsPsych.plugins['survey-text'] = (function() {
 
       // next trial
       jsPsych.finishTrial(trialdata);
-    };
+    });
 
-    // end trial if trial_duration is set
-    if (trial.trial_duration !== null) {
-      jsPsych.pluginAPI.setTimeout(function() {
-        end_trial();
-      }, trial.trial_duration);
-    }
-
-
+    var startTime = (new Date()).getTime();
   };
 
   return plugin;
