@@ -118,7 +118,7 @@ let tooSlowNode = {
 
 // Solution word
 let solutionWord = {
-    type: 'survey-text',
+    type: 'survey-text-mw',
     questions: [{prompt: 'Bitte geben Sie ein X oder ein L&oumlsungswort ein'}],
     button_label: 'Weiter',
     trial_duration: 8000,
