@@ -33,6 +33,7 @@ let confidenceRating = {
         labels: scaleConfidenceRating,
     }],
     data: {trial: 'confidence rating'},
+    button_label: 'Weiter',
 };
 
 // Coherence position
@@ -163,8 +164,8 @@ let enterSubjectId = {
 let reactionPracticeBlockInstructions = {
     type: 'instructions',
     pages: [
-      '<p class = "instructions">Nun kommt eine Aufgabe, in der Sie schnell '
-      + 'reagieren sollen. </p>'
+      '<p class = "instructions">Wir starten mit einer Aufgabe, in der Sie '
+      + 'schnell reagieren sollen. </p>'
       + '<p class = "instructions">Zuerst kommt ein Training, in dem Sie '
       + 'lernen, in einer vorgegebenen Zeit schnell zu reagieren. Sie sehen '
       + 'im Folgenden immer ein Kreuz in der Mitte des Bildschirms f&uumlr '
@@ -172,9 +173,9 @@ let reactionPracticeBlockInstructions = {
       + 'oder links von dem Kreuz auf.</p>'
       + '<p class = "instructions">Dr&uumlcken Sie bitte, wenn das '
       + 'Ausrufezeichen rechts erscheint, so schnell wie m&oumlglich auf die '
-      + 'rechte Reaktionstaste von der Tastatur. Wenn das Ausrufezeichen '
+      + 'rechte Reaktionstaste der Tastatur. Wenn das Ausrufezeichen '
       + 'links erscheint, dann dr&uumlcken Sie bitte auf die linke '
-      + 'Reaktionstaste auf der Tastatur. </p>'
+      + 'Reaktionstaste der Tastatur. </p>'
       + '<p class = "instructions">Sie haben jeweils nur 2 Sekunden Zeit '
       + 'f&uumlr diese Reaktion. Dies ist nur ein Trainingsdurchlauf. Sie '
       + 'k&oumlnnen ruhig Fehler machen und sich langsam an die schnelle '
@@ -330,7 +331,7 @@ let triadPracticeBlockInstructions = {
           + 'auf dem Bildschirm ZUSAMMENGEW&UumlRFELT und ZUSAMMENH&AumlNGEND '
           + 'erscheint. Bitte klicken Sie nach Eingabe des L&oumlsungswortes '
           + 'oder des X auf „Weiter“  (mit der Maus oder dem Cursor). Danach '
-          + 'ist es wichtig, dass Sie ihre Finger wieder auf die '
+          + 'ist es wichtig, dass Sie Ihre Finger wieder auf die '
           + 'Reaktionstasten legen, denn es geht dann direkt mit einer neuen '
           + 'Triade weiter.</p>'
           + '<p class = "instructions">Dr&uumlcken Sie die Leertaste, dann '
@@ -428,8 +429,8 @@ let intuitionBlockInstructions = {
           + 'davon ist ZUSAMMENH&AumlNGEND. Die Chance ist also fifty-fifty.'
           + '</p>'
           + '<p class = "instructions">Reagieren Sie einfach spontan und '
-          + 'benutzen Sie Ihre Intuition. Lesen Sie die jeweilige Wortgruppe '
-          + 'erst durch. Erst wenn die Wortgruppe verschwunden ist, '
+          + 'benutzen Sie Ihre Intuition. Lesen Sie sich die jeweilige '
+          + 'Wortgruppe erst durch. Erst wenn die Wortgruppe verschwunden ist, '
           + 'dr&uumlcken Sie entweder die RECHTE oder die LINKE Taste.</p>'
           + '<p class = "instructionscenter">Weiter mit der Leertaste...</p>',
 
@@ -458,14 +459,14 @@ let intuitionBlockInstructions = {
           + 'oder ZUSAMMENGEW&UumlRFELT ist. ZUSAMMENH&AumlNGEND bedeutet, '
           + 'dass die drei W&oumlrter auf ein gemeinsames viertes Wort '
           + 'verweisen (z.B. OPER, SPENDER, KERN verweisen auf SEIFE). '
-          + 'Achtung: Sie k&oumlnnen immer erst die Reaktionstaste dr&oumlcken '
+          + 'Achtung: Sie k&oumlnnen immer erst die Reaktionstaste drücken '
           + 'wenn die Triade verschwunden ist und auf dem Bildschirm '
           + 'ZUSAMMENGEW&UumlRFELT und ZUSAMMENH&AumlNGEND erscheint.</p>'
           + '<p class = "instructions">Beachten Sie auch, dass Sie nach jedem '
           + 'intuitiven Urteil ein L&oumlsungswort oder ein X eintippen '
           + 'k&oumlnnen. Bitte klicken Sie nach Eingabe des L&oumlsungswortes '
           + 'oder des X auf „Weiter“  (mit der Maus oder dem Cursor). Danach '
-          + 'ist es wichtig, dass Sie ihre Finger wieder auf die '
+          + 'ist es wichtig, dass Sie Ihre Finger wieder auf die '
           + 'Reaktionstasten legen, denn es geht dann direkt mit einer neuen '
           + 'Triade weiter.</p>'
           + '<p class = "instructionscenter">Mit Klick auf die Leertaste '
@@ -579,10 +580,10 @@ let fluencyBlockInstructions = {
         + 'erscheinen die Triaden in verschiedenen Farben. Ihre Aufgabe ist '
         + 'wieder dieselbe: Entscheiden Sie einfach spontan und aus dem Bauch '
         + 'heraus, ob die gezeigte Triade ZUSAMMENH&AumlNGEND oder '
-        + 'ZUSAMMENGEW&UumlRFELT ist. Es geht wieder um ihr spontanes, erstes '
+        + 'ZUSAMMENGEW&UumlRFELT ist. Es geht wieder um Ihr spontanes, erstes '
         + 'BAUCHGEF&UumlHL. Auch hier haben Sie wieder die M&oumlglichkeit, '
         + 'einen m&oumlglichen gemeinsamen Nenner einzutippen oder ein X. Aber '
-        + 'diese Aufgabe ist zweitrangig. Es geht um ihre spontan-intuitiven '
+        + 'diese Aufgabe ist zweitrangig. Es geht um Ihre spontan-intuitiven '
         + 'Urteile.</p>'
         + '<p class = "instructionscenter">Mit Klick auf die Leertaste beginnt '
         + 'die Aufgabe</p>',
@@ -742,7 +743,7 @@ let affectiveBlockInstructions = {
     pages: [
         '<p class = "instructions">Super! Jetzt kommt der letzte Aufgabenteil. '
         + 'Gleich ist es geschafft. Die Aufgabe bleibt die gleiche.  Sie sehen '
-        + 'wieder Worttriaden und sollen aus aus dem Bauch heraus entscheiden: '
+        + 'wieder Worttriaden und sollen aus dem Bauch heraus entscheiden: '
         + 'ZUSAMMENH&AumlNGEND oder ZUSAMMENGEW&UumlRFELT?</p>'
         + '<p class = "instructionscenter">Mit Klick auf die Leertaste beginnt '
         + 'die Aufgabe</p>',
